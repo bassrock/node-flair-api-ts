@@ -1,0 +1,57 @@
+{
+  "name": "flair-api-ts",
+  "version": "0.0.3",
+  "description": "A ts-node implementation of the Flair Smart Vent API",
+  "author": "bassrock",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib/**/*"
+  ],
+  "scripts": {
+    "test": "mocha -r ts-node/register src/\\*\\*/\\*.spec.ts",
+    "test-ci": "npm test -- --reporter mocha-junit-reporter",
+    "watch": "npm test -- --watch --watch-extensions ts -R min --watch-files src",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch",
+    "prepare": "npm run build",
+    "build": "npm run build:types && npm run build:js",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build:js": "babel src --out-dir lib --extensions \".ts,.tsx\" --source-maps inline",
+    "lint-check": "eslint --fix-dry-run src/**/*.ts",
+    "lint-fix": "eslint --fix src/**/*.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bassrock/node-flair-api-ts"
+  },
+  "bugs": {
+    "url": "https://github.com/bassrock/node-flair-api-ts/issues"
+  },
+  "dependencies": {
+    "@types/es6-promise": "^3.3.0",
+    "axios": "^0.19.2",
+    "moment": "^2.25.3",
+    "query-string": "^6.12.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/node": "^7.8.7",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/preset-typescript": "^7.9.0",
+    "@types/mocha": "^7.0.2",
+    "@typescript-eslint/eslint-plugin": "^2.27.0",
+    "@typescript-eslint/parser": "^2.27.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-prettier": "^3.1.2",
+    "mocha": "^7.1.2",
+    "prettier": "^2.0.4",
+    "ts-node": "^8.8.1",
+    "typescript": "^3.8.3",
+    "typescript-eslint": "0.0.1-alpha.0"
+  },
+  "license": "MIT"
+}

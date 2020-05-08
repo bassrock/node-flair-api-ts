@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "lib": [ "es2015", "dom" ],
+    "declaration": true,
+    "outDir": "./lib",
+    "module": "commonjs",
+    "typeRoots": ["./types", "node_modules/@types"]
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": ["node_modules", "**/__tests__/*"]
+}
