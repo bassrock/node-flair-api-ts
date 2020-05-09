@@ -7,6 +7,11 @@ export enum AlertType {
     FirmwareAvailable = 'FirmwareAvailable'
 }
 
+export enum TemperatureScale {
+    Farenheit = 'F',
+    Celcius = 'C',
+}
+
 export class User extends Model {
     public static type = 'users'
 
@@ -23,6 +28,13 @@ export class User extends Model {
     public firmwareEmails: boolean = false;
     public pushStructureAlertTypes: [AlertType?] = []
     public emailStructureAlertTypes: [AlertType?] = []
+    public temperatureScale: TemperatureScale = TemperatureScale.Celcius;
+    public updatedAt: Date = new Date();
+    public globalPush: boolean = false;
+    public reviewStars?: string;
+    public createdAt: Date = new Date();
+    public role: string = "user";
+    public notificationSettingsPrompted: boolean = false;
 
     constructor(data: any) {
         super();
@@ -32,6 +44,7 @@ export class User extends Model {
 
     private fromJSON(data: any) {
         this.globalEmail = data.attributes['global-email'];
+        this.name = data.attributes['name'];
         this.reviewPrompted = data.attributes['review-prompted'];
         this.contractorValidated = data.attributes['contractor-validated'];
         this.email = data.attributes['email'];
@@ -43,5 +56,13 @@ export class User extends Model {
         this.id = data.id;
         this.pushStructureAlertTypes = data.attributes['push-structure-alert-types']
         this.emailStructureAlertTypes = data.attributes['email-structure-alert-types']
+
+        this.temperatureScale = data.attributes['temperature-scale']
+        this.updatedAt = new Date(data.attributes['updated-at']);
+        this.globalPush = data.attributes['global-push']
+        this.reviewStars = data.attributes['review-stars']
+        this.createdAt = new Date(data.attributes['created-at']);
+        this.role = data.attributes['role']
+        this.notificationSettingsPrompted = data.attributes['notification-settings-prompted']
     }
 }
