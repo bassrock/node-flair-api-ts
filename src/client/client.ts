@@ -132,9 +132,31 @@ class Client {
 
     public async getVentReading(vent: Vent): Promise<Vent> {
         await this.updateClient()
-        let response = await this.client.get(`/api/vents${vent.id}/current-reading` )
-        console.log(response.data);
+        let response = await this.client.get(`/api/vents/${vent.id}/current-reading`)
+        vent.setCurrentReading(response.data.data)
         return vent;
+    }
+
+    public async setVentPercentOpen(vent: Vent, percentOpen: number): Promise<Vent> {
+        await this.updateClient()
+        let response = await this.client.patch(`/api/vents/${vent.id}`, {
+            data: {
+                type: "vents",
+                attributes: {
+                    "percent-open": percentOpen
+                },
+                relationships: {}
+            }
+        })
+        vent.fromJSON(response.data.data)
+        return vent;
+    }
+
+    public async getPuckReading(puck: Puck): Promise<Puck> {
+        await this.updateClient()
+        let response = await this.client.get(`/api/pucks/${puck.id}/current-reading`)
+        puck.setCurrentReading(response.data.data)
+        return puck;
     }
 }
 
