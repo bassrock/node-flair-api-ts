@@ -2,7 +2,6 @@ import axios, {AxiosInstance} from "axios";
 import * as querystring from 'query-string';
 import moment, {Moment} from 'moment';
 import {User} from "./models";
-import {Model} from "./models/model";
 
 interface Token {
     access_token: string,
@@ -64,35 +63,6 @@ class Client {
         this.client = axios.create({
             baseURL: 'https://api.flair.co'
         });
-        //this.addMiddleware(this.client)
-    }
-
-    private addMiddleware(client: AxiosInstance) {
-        // const idToPath = {
-        //     name: 'id-to-path-request',
-        //     req: (payload: any) => {
-        //         if (payload.req.params.id !== undefined) {
-        //             payload.req.url += `/${payload.req.params.id}`
-        //             delete payload.req.params.id;
-        //         }
-        //         return payload;
-        //     }
-        // }
-
-        const modelDeserializer = {
-            name: 'model-deserializer',
-            res: (payload: any) => {
-                let {data} = payload.res.data;
-                if (!Array.isArray(data))
-                    data = [data];
-
-                console.log(data)
-
-            }
-        }
-
-        //client.insertMiddlewareBefore('axios-request', idToPath);
-       // client.insertMiddlewareBefore('response', modelDeserializer);
     }
 
     /**
@@ -133,12 +103,13 @@ class Client {
         this.client.defaults.headers.common['Authorization'] = this.currentToken!.token_type + ' ' + this.currentToken!.access_token;
     }
 
-
-    public async getUsers() : Promise<[User]> {
+    public async getUsers(): Promise<[User]> {
         await this.updateClient()
         let response = await this.client.get('/api/users')
         //TODO: Paginate
-        return response.data as [User];
+        return response.data.data.map((data: any): User => {
+            return new User(data);
+        });
     }
 }
 

@@ -6,12 +6,11 @@ describe('Client', function() {
 
 
 
-
-    describe('#me()', async function() {
-        it('should get a me', async function(done) {
+    describe('#getUsers()', async function() {
+        it('should get users', async function(done) {
             let users = await client.getUsers()
             console.log(users)
-
+            done()
         });
     });
 });
