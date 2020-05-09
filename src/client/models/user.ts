@@ -17,7 +17,6 @@ export class User extends Model {
 
 
     public globalEmail: boolean = false;
-    public name: string = '';
     public reviewPrompted: boolean = false;
     public contractorValidated: boolean = false;
     public email: string = '';

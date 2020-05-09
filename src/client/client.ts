@@ -71,7 +71,7 @@ class Client {
     private async getRefreshToken(): Promise<Token> {
         const requestURL = '/oauth/token?' + querystring.stringify(this.passwordTokenConfig);
         const response = await this.client.post(requestURL)
-        response.data.expires_in = moment().add(response.data.expires_in, 'seconds')
+        response.data.expires_at = moment().add(response.data.expires_in, 'seconds')
         return this.currentToken = response.data as Token
     }
 
@@ -88,7 +88,7 @@ class Client {
                 refresh_token: this.currentToken!.refresh_token
             });
             const response = await axios.post(requestURL)
-            response.data.expires_in = moment().add(response.data.expires_in, 'seconds')
+            response.data.expires_at = moment().add(response.data.expires_in, 'seconds')
             this.currentToken = response.data
         }
 
@@ -128,6 +128,13 @@ class Client {
         return response.data.data.map((data: any): Vent => {
             return new Vent(data);
         });
+    }
+
+    public async getVentReading(vent: Vent): Promise<Vent> {
+        await this.updateClient()
+        let response = await this.client.get(`/api/vents${vent.id}/current-reading` )
+        console.log(response.data);
+        return vent;
     }
 }
 

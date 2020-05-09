@@ -11,7 +11,6 @@ export class Puck extends Model {
     oauthAppAssignedAt?: Date;
     beaconIntervalMs: number = 0;
     irDownload: boolean = false;
-    name: string = '';
     setpointBoundLow: number = 0;
     temperatureOffsetC?: number;
     isGateway: boolean = false;

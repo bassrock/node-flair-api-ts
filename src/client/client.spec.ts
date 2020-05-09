@@ -1,9 +1,12 @@
 import Client from "./client";
 
-
 describe('Client', function() {
     let client: Client;
 
+
+    beforeEach(() => {
+        client = new Client(process.env.clientID!, process.env.clientSecret!, process.env.username!, process.env.password!);
+    })
 
 
     describe('#getUsers()', async function() {
@@ -24,6 +27,14 @@ describe('Client', function() {
     });
 
     describe('#getVents()', async function() {
+        it('should get vents', async function(done) {
+            let vents = await client.getVents()
+            console.log(vents)
+            return true
+        });
+    });
+
+    describe('#getVentReading()', async function() {
         it('should get vents', async function(done) {
             let vents = await client.getVents()
             console.log(vents)

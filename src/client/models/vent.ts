@@ -3,7 +3,6 @@ import {Model} from "./model";
 export class Vent extends Model {
     public static type = 'vents'
 
-    name: string = '';
     inactive: boolean = false;
     setupLightstrip: number = 1;
     percentOpen: number = 0;
