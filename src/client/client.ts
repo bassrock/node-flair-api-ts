@@ -1,7 +1,7 @@
 import axios, {AxiosInstance} from "axios";
 import * as querystring from 'query-string';
 import moment, {Moment} from 'moment';
-import {User} from "./models";
+import {Puck, User, Vent} from "./models";
 
 interface Token {
     access_token: string,
@@ -54,7 +54,7 @@ class Client {
         };
 
         this.refreshTokenConfig = {
-            scope: Client.scopes.join(' '),
+            scope: Client.scopes.join('+'),
             client_id: client_id,
             client_secret: client_secret,
             grant_type: 'refresh_token'
@@ -109,6 +109,24 @@ class Client {
         //TODO: Paginate
         return response.data.data.map((data: any): User => {
             return new User(data);
+        });
+    }
+
+    public async getPucks(): Promise<[Puck]> {
+        await this.updateClient()
+        let response = await this.client.get('/api/pucks')
+        //TODO: Paginate
+        return response.data.data.map((data: any): Puck => {
+            return new Puck(data);
+        });
+    }
+
+    public async getVents(): Promise<[Vent]> {
+        await this.updateClient()
+        let response = await this.client.get('/api/vents')
+        //TODO: Paginate
+        return response.data.data.map((data: any): Vent => {
+            return new Vent(data);
         });
     }
 }

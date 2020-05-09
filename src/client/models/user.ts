@@ -56,7 +56,6 @@ export class User extends Model {
         this.id = data.id;
         this.pushStructureAlertTypes = data.attributes['push-structure-alert-types']
         this.emailStructureAlertTypes = data.attributes['email-structure-alert-types']
-
         this.temperatureScale = data.attributes['temperature-scale']
         this.updatedAt = new Date(data.attributes['updated-at']);
         this.globalPush = data.attributes['global-push']
