@@ -86,18 +86,21 @@ class Client {
     private async updateAccessToken(): Promise<Token> {
         if (this.currentToken === undefined) {
             return this.getRefreshToken();
-        } else if (this.currentToken.expires_at.isBefore(new Date())) {
+        } else if (this.currentToken.expires_at.isBefore(moment().subtract(20, 'seconds'))) {
             const requestURL = '/oauth/token?' + querystring.stringify({
                 ...this.refreshTokenConfig,
                 refresh_token: this.currentToken!.refresh_token
             });
-            const response = await axios.post(requestURL)
-            if (response.status !== 200) {
-                throw new Error("Refreshing access token failed.")
+            try {
+                const response = await axios.post(requestURL)
+                if (response.status !== 200) {
+                    return this.getRefreshToken();
+                }
+                response.data.expires_at = moment().add(response.data.expires_in, 'seconds')
+                this.currentToken = response.data
+            } catch (e) {
+                return this.getRefreshToken();
             }
-
-            response.data.expires_at = moment().add(response.data.expires_in, 'seconds')
-            this.currentToken = response.data
         }
 
         return this.currentToken!
