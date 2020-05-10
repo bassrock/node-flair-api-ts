@@ -1,7 +1,8 @@
 import axios, {AxiosInstance} from "axios";
 import * as querystring from 'query-string';
 import moment, {Moment} from 'moment';
-import {Puck, User, Vent} from "./models";
+import {FlairMode, Puck, Structure, StructureHeatCoolMode, User, Vent} from "./models";
+import {Room} from "./models/room";
 
 interface Token {
     access_token: string,
@@ -71,6 +72,9 @@ class Client {
     private async getRefreshToken(): Promise<Token> {
         const requestURL = '/oauth/token?' + querystring.stringify(this.passwordTokenConfig);
         const response = await this.client.post(requestURL)
+        if (response.status !== 200) {
+            throw new Error("Getting refresh token failed.")
+        }
         response.data.expires_at = moment().add(response.data.expires_in, 'seconds')
         return this.currentToken = response.data as Token
     }
@@ -88,6 +92,10 @@ class Client {
                 refresh_token: this.currentToken!.refresh_token
             });
             const response = await axios.post(requestURL)
+            if (response.status !== 200) {
+                throw new Error("Refreshing access token failed.")
+            }
+
             response.data.expires_at = moment().add(response.data.expires_in, 'seconds')
             this.currentToken = response.data
         }
@@ -108,7 +116,7 @@ class Client {
         let response = await this.client.get('/api/users')
         //TODO: Paginate
         return response.data.data.map((data: any): User => {
-            return new User(data);
+            return (new User()).fromJSON(data);
         });
     }
 
@@ -117,7 +125,7 @@ class Client {
         let response = await this.client.get('/api/pucks')
         //TODO: Paginate
         return response.data.data.map((data: any): Puck => {
-            return new Puck(data);
+            return (new Puck()).fromJSON(data);
         });
     }
 
@@ -126,7 +134,7 @@ class Client {
         let response = await this.client.get('/api/vents')
         //TODO: Paginate
         return response.data.data.map((data: any): Vent => {
-            return new Vent(data);
+            return (new Vent()).fromJSON(data);
         });
     }
 
@@ -157,6 +165,89 @@ class Client {
         let response = await this.client.get(`/api/pucks/${puck.id}/current-reading`)
         puck.setCurrentReading(response.data.data)
         return puck;
+    }
+
+    public async getRooms(): Promise<[Room]> {
+        await this.updateClient()
+        let response = await this.client.get('/api/rooms')
+        //TODO: Paginate
+        return response.data.data.map((data: any): Room => {
+            return (new Room()).fromJSON(data);
+        });
+    }
+
+    public async getRoom(room: Room): Promise<Room> {
+        await this.updateClient()
+        let response = await this.client.get(`/api/rooms/${room.id}`)
+        //TODO: Paginate
+        return room.fromJSON(response.data.data);
+    }
+
+    public async setRoomSetPoint(room: Room, setPointC: number): Promise<Room> {
+        await this.updateClient()
+        let response = await this.client.patch(`/api/rooms/${room.id}`, {
+            data: {
+                type: "rooms",
+                attributes: {
+                    "set-point-c": setPointC
+                },
+                relationships: {}
+            }
+        })
+        room.fromJSON(response.data.data)
+        return room;
+    }
+
+    public async getStructures(): Promise<[Structure]> {
+        await this.updateClient()
+        let response = await this.client.get(`/api/structures`)
+        //TODO: Paginate
+        return response.data.data.map((data: any): Structure => {
+            return (new Structure()).fromJSON(data);
+        });
+    }
+
+
+    public async getStructure(structure: Structure): Promise<Structure> {
+        await this.updateClient()
+        let response = await this.client.get(`/api/structures/${structure.id}`)
+        //TODO: Paginate
+        return structure.fromJSON(response.data.data);
+    }
+
+    public async getPrimaryStructure(): Promise<Structure> {
+        await this.updateClient()
+        return (await this.getStructures()).find((structure: Structure) => {
+            return structure.isPrimaryHome();
+        })!;
+    }
+
+    public async setStructureMode(structure: Structure, mode: FlairMode): Promise<Structure> {
+        await this.updateClient()
+        let response = await this.client.patch(`/api/structures/${structure.id}`, {
+            data: {
+                type: "structures",
+                attributes: {
+                    "mode": mode
+                },
+                relationships: {}
+            }
+        })
+        return structure.fromJSON(response.data.data)
+    }
+
+    public async setStructureHeatingCoolMode(structure: Structure, mode: StructureHeatCoolMode): Promise<Structure> {
+        await this.updateClient()
+        let response = await this.client.patch(`/api/structures/${structure.id}`, {
+            data: {
+                type: "structures",
+                attributes: {
+                    "structure-heat-cool-mode": mode
+                },
+                relationships: {}
+            }
+        })
+        return structure.fromJSON(response.data.data)
     }
 }
 

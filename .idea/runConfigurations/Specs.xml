@@ -5,6 +5,12 @@
     <mocha-package>$PROJECT_DIR$/node_modules/mocha</mocha-package>
     <working-directory>$PROJECT_DIR$</working-directory>
     <pass-parent-env>true</pass-parent-env>
+    <envs>
+      <env name="clientID" value="KwUieSOD2Zg3zdu5bjlwYu5dbikHNVwKkV2QOKN7" />
+      <env name="clientSecret" value="2h8saslVi2qUDMmrUH9dJ9W0NJH7bkSeAOCZCgzUrUq6683vNAJV8uuLuTGj" />
+      <env name="username" value="bass_rock@me.com" />
+      <env name="password" value="gArlie18201" />
+    </envs>
     <ui>bdd</ui>
     <extra-mocha-options>--watch --watch-files src --watch-extensions ts</extra-mocha-options>
     <test-kind>PATTERN</test-kind>

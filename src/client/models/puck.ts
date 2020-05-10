@@ -38,11 +38,6 @@ export class Puck extends Model {
     currentRoomPressure: number = 0;
     systemVoltage: number = 0;
 
-    constructor(data: any) {
-        super();
-        this.fromJSON(data);
-    }
-
     public setCurrentReading(data: any) {
         // {
         //       'room-temperature-c': 22.32,
@@ -76,7 +71,7 @@ export class Puck extends Model {
         this.isGateway = data.attributes['is-gateway']
     }
 
-    private fromJSON(data: any) {
+    public fromJSON(data: any) : Puck {
         this.irSetupEnabled = data.attributes['ir-setup-enabled'];
         this.temperatureOffsetOverrideC = data.attributes['temperature-offset-override-c'] ? data.attributes['temperature-offset-override-c'] : 0;
         this.features = data.attributes['features'];
@@ -105,5 +100,6 @@ export class Puck extends Model {
         this.createdAt = new Date(data.attributes['created-at']);
         this.updatedAt = new Date(data.attributes['updated-at']);
         this.id = data.id;
+        return this;
     }
 }

@@ -56,4 +56,20 @@ describe('Client', function() {
     //         return true
     //     });
     // });
+
+    // describe('#getRooms()', async function() {
+    //     it('should get rooms', async function(done) {
+    //         let rooms = await client.getRooms()
+    //         console.log(rooms)
+    //         return true
+    //     });
+    // });
+
+    describe('#setRoomSetPoint()', async function() {
+        it('should set room setpoint', async function(done) {
+            let rooms = await client.getRooms()
+            let room = await client.setRoomSetPoint(rooms[0], 24)
+            return true
+        });
+    });
 });

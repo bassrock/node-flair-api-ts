@@ -35,13 +35,7 @@ export class User extends Model {
     public role: string = "user";
     public notificationSettingsPrompted: boolean = false;
 
-    constructor(data: any) {
-        super();
-        this.fromJSON(data);
-    }
-
-
-    private fromJSON(data: any) {
+    public fromJSON(data: any) : User {
         this.globalEmail = data.attributes['global-email'];
         this.name = data.attributes['name'];
         this.reviewPrompted = data.attributes['review-prompted'];
@@ -62,5 +56,7 @@ export class User extends Model {
         this.createdAt = new Date(data.attributes['created-at']);
         this.role = data.attributes['role']
         this.notificationSettingsPrompted = data.attributes['notification-settings-prompted']
+
+        return this;
     }
 }

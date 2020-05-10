@@ -18,11 +18,6 @@ export class Vent extends Model {
     lights?: any;
     systemVoltage: number = 0;
 
-    constructor(data: any) {
-        super();
-        this.fromJSON(data);
-    }
-
     public setCurrentReading(data: any) {
         this.systemVoltage = data.attributes['system-voltage']
         this.lights = data.attributes['lights']
