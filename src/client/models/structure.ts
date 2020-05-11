@@ -38,6 +38,6 @@ export class Structure extends Model {
     }
 
     public isPrimaryHome(): boolean {
-        return this.home && this.isActive;
+        return this.home;
     }
 }
