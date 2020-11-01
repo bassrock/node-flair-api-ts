@@ -1,15 +1,26 @@
 {
   "compilerOptions": {
+    "target": "ES2018",
+    "module": "commonjs",
+    "lib": [
+      "es2015",
+      "es2016",
+      "es2017",
+      "es2018"
+    ],
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": false,
+    "outDir": "./dist",
+    "rootDir": "./src",
     "strict": true,
     "esModuleInterop": true,
-    "lib": [ "es2015", "dom" ],
-    "declaration": true,
-    "outDir": "./lib",
-    "module": "commonjs",
-    "typeRoots": ["./types", "node_modules/@types"]
+    "noImplicitAny": false
   },
   "include": [
-    "src/**/*"
+    "src/"
   ],
-  "exclude": ["node_modules", "**/__tests__/*"]
+  "exclude": [
+    "**/*.spec.ts"
+  ]
 }
