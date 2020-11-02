@@ -1,4 +1,4 @@
-import {Model} from "./model";
+import {Model} from './model';
 
 export enum PuckInactive {
     NotSetup = 'NotSetup',
@@ -20,25 +20,25 @@ export class Room extends Model {
     createdAt: Date = new Date();
     holdUntil?: Date;
     pucksInactive: PuckInactive = PuckInactive.NotSetup
-    active: boolean = false;
+    active = false;
     currentTemperatureC?: number;
-    humidityAwayMax: number = 0;
-    tempAwayMaxC: number = 0;
-    tempAwayMinC: number = 0;
+    humidityAwayMax = 0;
+    tempAwayMaxC = 0;
+    tempAwayMinC = 0;
     holdReason?: string;
     windows?: any;
-    holdUntilScheduleEvent: boolean = false;
-    airReturn: boolean = false;
-    frozenPipePetProtect: boolean = false;
-    setPointC: number = 0;
-    humidityAwayMin: number = 0;
+    holdUntilScheduleEvent = false;
+    airReturn = false;
+    frozenPipePetProtect = false;
+    setPointC = 0;
+    humidityAwayMin = 0;
     level?: number;
     currentHumidity?: number;
     stateUpdatedAt?: Date;
-    preheatPrecool: boolean = false;
+    preheatPrecool = false;
 
     //Unknown
-    roomType: string = '';
+    roomType = '';
     setPointManual?: string;
     occupancyMode: OccupancyMode = OccupancyMode.FlairAuto;
     roomAwayMode: RoomAwayMode = RoomAwayMode.SmartAway;
@@ -56,33 +56,33 @@ export class Room extends Model {
     // }
 
     public fromJSON(data: any): Room {
-        this.name = data.attributes['name'];
-        this.createdAt = new Date(data.attributes['created-at']);
-        this.updatedAt = new Date(data.attributes['updated-at']);
-        this.pucksInactive = data.attributes['pucks-inactive'];
-        this.holdUntil = data.attributes['hold-until'] ? new Date(data.attributes['hold-until']) : undefined;
-        this.roomType = data.attributes['room-type'];
-        this.setPointManual = data.attributes['set-point-manual'] ? data.attributes['set-point-manual'] : undefined;
-        this.active = data.attributes['active'];
-        this.currentTemperatureC = data.attributes['current-temperature-c'] ? data.attributes['current-temperature-c'] : undefined;
-        this.humidityAwayMax = data.attributes['humidity-away-max'];
-        this.tempAwayMaxC = data.attributes['temp-away-max-c'];
-        this.tempAwayMinC = data.attributes['temp-away-min-c'];
-        this.holdReason = data.attributes['hold-reason'] ? data.attributes['hold-reason'] : undefined;
-        this.windows = data.attributes['windows']
-        this.holdUntilScheduleEvent = data.attributes['hold-until-schedule-event'];
-        this.airReturn = data.attributes['air-return'];
-        this.frozenPipePetProtect = data.attributes['frozen-pipe-pet-protect'];
-        this.humidityAwayMin = data.attributes['humidity-away-min'];
-        this.setPointC = data.attributes['set-point-c'];
-        this.level = data.attributes['level'] ? data.attributes['level'] : undefined;
-        this.currentHumidity = data.attributes['current-humidity'] ? data.attributes['current-humidity'] : undefined;
-        this.stateUpdatedAt = data.attributes['state-updated-at'] ? new Date(data.attributes['state-updated-at']) : undefined;
-        this.preheatPrecool = data.attributes['preheat-precool'];
-        this.occupancyMode = data.attributes['occupancy-mode'];
-        this.roomAwayMode = data.attributes['room-away-mode'];
+      this.name = data.attributes.name;
+      this.createdAt = new Date(data.attributes['created-at']);
+      this.updatedAt = new Date(data.attributes['updated-at']);
+      this.pucksInactive = data.attributes['pucks-inactive'];
+      this.holdUntil = data.attributes['hold-until'] ? new Date(data.attributes['hold-until']) : undefined;
+      this.roomType = data.attributes['room-type'];
+      this.setPointManual = data.attributes['set-point-manual'] ? data.attributes['set-point-manual'] : undefined;
+      this.active = data.attributes.active;
+      this.currentTemperatureC = data.attributes['current-temperature-c'] ? data.attributes['current-temperature-c'] : undefined;
+      this.humidityAwayMax = data.attributes['humidity-away-max'];
+      this.tempAwayMaxC = data.attributes['temp-away-max-c'];
+      this.tempAwayMinC = data.attributes['temp-away-min-c'];
+      this.holdReason = data.attributes['hold-reason'] ? data.attributes['hold-reason'] : undefined;
+      this.windows = data.attributes.windows;
+      this.holdUntilScheduleEvent = data.attributes['hold-until-schedule-event'];
+      this.airReturn = data.attributes['air-return'];
+      this.frozenPipePetProtect = data.attributes['frozen-pipe-pet-protect'];
+      this.humidityAwayMin = data.attributes['humidity-away-min'];
+      this.setPointC = data.attributes['set-point-c'];
+      this.level = data.attributes.level ? data.attributes.level : undefined;
+      this.currentHumidity = data.attributes['current-humidity'] ? data.attributes['current-humidity'] : undefined;
+      this.stateUpdatedAt = data.attributes['state-updated-at'] ? new Date(data.attributes['state-updated-at']) : undefined;
+      this.preheatPrecool = data.attributes['preheat-precool'];
+      this.occupancyMode = data.attributes['occupancy-mode'];
+      this.roomAwayMode = data.attributes['room-away-mode'];
 
-        this.id = data.id;
-        return this;
+      this.id = data.id;
+      return this;
     }
 }
