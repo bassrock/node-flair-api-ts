@@ -3,7 +3,7 @@ import * as querystring from 'query-string';
 import moment, {Moment} from 'moment';
 import {FlairMode, Puck, Structure, StructureHeatCoolMode, User, Vent, Room} from './models';
 
-interface Token {
+export interface Token {
     access_token: string;
     expires_at: Moment;
     token_type: string;
@@ -12,7 +12,7 @@ interface Token {
 }
 
 
-class Client {
+export class Client {
 
     private passwordTokenConfig: {
         password: string;
@@ -253,5 +253,3 @@ class Client {
       return structure.fromJSON(response.data.data);
     }
 }
-
-export default Client;
