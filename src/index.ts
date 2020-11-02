@@ -1,7 +1,7 @@
 import Client from './client';
 
 const Flair = {
-    Client
+  Client,
 };
 
 export default Flair;
