@@ -3,14 +3,11 @@
   "version": "0.0.0-development",
   "description": "A ts-node implementation of the Flair Smart Vent API",
   "author": "bassrock",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
-  "files": [
-    "lib/**/*"
-  ],
   "scripts": {
     "test": "mocha -r ts-node/register src/\\*\\*/\\*.spec.ts",
     "test-ci": "npm test -- --reporter mocha-junit-reporter",
