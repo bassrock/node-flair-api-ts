@@ -1,2 +1,2 @@
-export * from './models';
-export * from './client';
+export * from './models/index'
+export * as Client from './client';
