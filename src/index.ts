@@ -1,2 +1,2 @@
-export * from './models'
+export * from './models';
 export { Client, Token } from './client';

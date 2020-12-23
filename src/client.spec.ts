@@ -1,4 +1,4 @@
-import Client from './client';
+import { Client } from './client';
 
 describe('Client', () => {
   let client: Client;
