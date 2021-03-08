@@ -1,0 +1,219 @@
+[
+    {
+        "scope": "https://api.flair.co:443",
+        "method": "POST",
+        "path": "/oauth/token?client_id=test_client_id&client_secret=test_client_secret&grant_type=password&password=test_password&scope=structures.edit%20structures.view%20pucks.view%20pucks.edit%20vents.view%20vents.edit%20users.view&username=test_username",
+        "body": "",
+        "status": 200,
+        "response": {
+            "access_token": "test_access_token",
+            "expires_in": 3600,
+            "token_type": "Bearer",
+            "scope": "structures.edit structures.view pucks.view pucks.edit vents.view vents.edit users.view",
+            "refresh_token": "test_refresh_token"
+        },
+        "rawHeaders": [
+            "Date",
+            "Mon, 08 Mar 2021 00:14:03 GMT",
+            "Content-Type",
+            "application/json",
+            "Content-Length",
+            "244",
+            "Connection",
+            "close",
+            "Server",
+            "gunicorn/20.0.4",
+            "Cache-Control",
+            "no-store",
+            "Pragma",
+            "no-cache",
+            "Access-Control-Allow-Origin",
+            "*"
+        ],
+        "responseIsBinary": false
+    },
+    {
+        "scope": "https://api.flair.co:443",
+        "method": "GET",
+        "path": "/api/users",
+        "body": "",
+        "status": 200,
+        "response": {
+            "meta": {
+                "self": "/api/users",
+                "first": "/api/users?include=&page%5Bsize%5D=50&page%5Bpage%5D=1",
+                "last": "/api/users?include=&page%5Bsize%5D=50&page%5Bpage%5D=1",
+                "next": null,
+                "prev": null
+            },
+            "data": [
+                {
+                    "type": "users",
+                    "attributes": {
+                        "email": "test_email",
+                        "default-temperature-preference-c": 22.5,
+                        "role": null,
+                        "global-email": false,
+                        "no-proactive": null,
+                        "name": "Daniel",
+                        "contractor-validated": null,
+                        "sales-channel": null,
+                        "review-prompted": null,
+                        "email-structure-alert-types": [
+                            "FirmwareAvailable",
+                            "PuckBatteryAlert",
+                            "SystemOffline",
+                            "TemperatureOutOfBounds",
+                            "ThermostatDisconnected",
+                            "VentBatteryAlert"
+                        ],
+                        "betas": null,
+                        "partner": null,
+                        "created-at": "2020-04-19T19:06:03.617011+00:00",
+                        "temperature-scale": "F",
+                        "alert-emails": true,
+                        "notification-settings-prompted": null,
+                        "global-push": false,
+                        "firmware-emails": true,
+                        "beta-bridge-user": null,
+                        "push-structure-alert-types": [
+                            "FirmwareAvailable",
+                            "PuckBatteryAlert",
+                            "SystemOffline",
+                            "TemperatureOutOfBounds",
+                            "ThermostatDisconnected",
+                            "VentBatteryAlert"
+                        ],
+                        "review-stars": 3,
+                        "updated-at": "2020-07-22T01:27:47.652853+00:00"
+                    },
+                    "relationships": {
+                        "received-invitations": {
+                            "links": {
+                                "self": "/api/users/12345/relationships/received-invitations",
+                                "related": "/api/users/12345/received-invitations"
+                            }
+                        },
+                        "default-structure": {
+                            "links": {
+                                "self": "/api/users/12345/relationships/default-structure",
+                                "related": "/api/users/12345/default-structure"
+                            },
+                            "data": {
+                                "type": "structures",
+                                "id": "14573"
+                            }
+                        },
+                        "editable-structures": {
+                            "links": {
+                                "self": "/api/users/12345/relationships/editable-structures",
+                                "related": "/api/users/12345/editable-structures"
+                            }
+                        },
+                        "devices": {
+                            "links": {
+                                "related": "/api/users/12345/devices"
+                            }
+                        },
+                        "adminable-structures": {
+                            "links": {
+                                "self": "/api/users/12345/relationships/adminable-structures",
+                                "related": "/api/users/12345/adminable-structures"
+                            }
+                        },
+                        "unfinished-setup-structure": {
+                            "links": {
+                                "related": "/api/users/12345/unfinished-setup-structure"
+                            },
+                            "data": null
+                        },
+                        "ui-notifications": {
+                            "links": {
+                                "self": "/api/users/12345/relationships/ui-notifications",
+                                "related": "/api/users/12345/ui-notifications"
+                            },
+                            "data": [
+                                {
+                                    "type": "notifications",
+                                    "id": "034af67f-1c9c-41fe-8df6-a83372d80651"
+                                },
+                                {
+                                    "type": "notifications",
+                                    "id": "bfdaf1d8-edbb-4783-b717-960e80363a54"
+                                },
+                                {
+                                    "type": "notifications",
+                                    "id": "7a16e447-2cbe-47a3-bae3-5da64b14204f"
+                                },
+                                {
+                                    "type": "notifications",
+                                    "id": "fc09e994-429a-49d0-ac23-2f5c7b20390b"
+                                },
+                                {
+                                    "type": "notifications",
+                                    "id": "f39e00ae-caef-4a6b-90aa-00eb150fffc7"
+                                },
+                                {
+                                    "type": "notifications",
+                                    "id": "081e3151-3fb4-4d9b-b79e-8c665973af3a"
+                                }
+                            ]
+                        },
+                        "puck-oauth-apps": {
+                            "links": {
+                                "related": "/api/users/12345/puck-oauth-apps"
+                            }
+                        },
+                        "integrations": {
+                            "links": {
+                                "self": "/api/users/12345/relationships/integrations",
+                                "related": "/api/users/12345/integrations"
+                            }
+                        },
+                        "structures": {
+                            "links": {
+                                "self": "/api/users/12345/relationships/structures",
+                                "related": "/api/users/12345/structures"
+                            }
+                        },
+                        "viewable-structures": {
+                            "links": {
+                                "self": "/api/users/12345/relationships/viewable-structures",
+                                "related": "/api/users/12345/viewable-structures"
+                            }
+                        },
+                        "primary-device": {
+                            "links": {
+                                "self": "/api/users/12345/relationships/primary-device",
+                                "related": "/api/users/12345/primary-device"
+                            },
+                            "data": null
+                        }
+                    },
+                    "id": "12345"
+                }
+            ]
+        },
+        "rawHeaders": [
+            "Date",
+            "Mon, 08 Mar 2021 00:14:04 GMT",
+            "Content-Type",
+            "application/json; charset=utf-8",
+            "Transfer-Encoding",
+            "chunked",
+            "Connection",
+            "close",
+            "Server",
+            "gunicorn/20.0.4",
+            "Access-Control-Allow-Origin",
+            "*",
+            "Access-Control-Max-Age",
+            "21600",
+            "Access-Control-Allow-Headers",
+            "authorization, content-type, accept, x-admin-mode, user-agent",
+            "Access-Control-Allow-Credentials",
+            "true"
+        ],
+        "responseIsBinary": false
+    }
+]

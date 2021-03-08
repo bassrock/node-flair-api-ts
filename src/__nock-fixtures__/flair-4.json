@@ -1,0 +1,718 @@
+[
+    {
+        "scope": "https://api.flair.co:443",
+        "method": "POST",
+        "path": "/oauth/token?client_id=test_client_id&client_secret=test_client_secret&grant_type=password&password=test_password&scope=structures.edit%20structures.view%20pucks.view%20pucks.edit%20vents.view%20vents.edit%20users.view&username=test_username",
+        "body": "",
+        "status": 200,
+        "response": {
+            "access_token": "test_access_token",
+            "expires_in": 3600,
+            "token_type": "Bearer",
+            "scope": "structures.edit structures.view pucks.view pucks.edit vents.view vents.edit users.view",
+            "refresh_token": "test_refresh_token"
+        },
+        "rawHeaders": [
+            "Date",
+            "Mon, 08 Mar 2021 00:14:10 GMT",
+            "Content-Type",
+            "application/json",
+            "Content-Length",
+            "244",
+            "Connection",
+            "close",
+            "Server",
+            "gunicorn/20.0.4",
+            "Cache-Control",
+            "no-store",
+            "Pragma",
+            "no-cache",
+            "Access-Control-Allow-Origin",
+            "*"
+        ],
+        "responseIsBinary": false
+    },
+    {
+        "scope": "https://api.flair.co:443",
+        "method": "GET",
+        "path": "/api/pucks",
+        "body": "",
+        "status": 200,
+        "response": {
+            "meta": {
+                "self": "/api/pucks",
+                "first": "/api/pucks?include=&page%5Bsize%5D=50&page%5Bpage%5D=1",
+                "last": "/api/pucks?include=&page%5Bsize%5D=50&page%5Bpage%5D=1",
+                "next": null,
+                "prev": null
+            },
+            "data": [
+                {
+                    "type": "pucks",
+                    "attributes": {
+                        "oauth-app-assigned-at": null,
+                        "reporting-interval-ds": 255,
+                        "current-rssi": -68,
+                        "current-temperature-c": 21.92,
+                        "current-humidity": 34,
+                        "setpoint-bound-high": 32.23,
+                        "updated-at": "2021-03-08T00:14:07.401676+00:00",
+                        "ignore-readings-for-room": false,
+                        "is-gateway": true,
+                        "features": null,
+                        "ir-setup-enabled": null,
+                        "puck-display-color": "white",
+                        "demo-mode": 0,
+                        "created-at": "2019-12-12T18:47:21.167298+00:00",
+                        "sub-ghz-radio-tx-power-mw": null,
+                        "ir-download": false,
+                        "humidity-offset": null,
+                        "display-number": "0112",
+                        "temperature-offset-override-c": null,
+                        "temperature-offset-c": null,
+                        "name": "Guest Room-0112",
+                        "orientation": "standing",
+                        "bluetooth-tx-power-mw": 500,
+                        "last-reported-as-gateway": true,
+                        "voltage": 3.41,
+                        "inactive": false,
+                        "beacon-interval-ms": 4095,
+                        "locked": false,
+                        "setpoint-bound-low": 10
+                    },
+                    "relationships": {
+                        "closest-vents": {
+                            "links": {
+                                "related": "/api/pucks/0112bbb1-4563-5d9f-7e62-caee4a0512cb/closest-vents"
+                            }
+                        },
+                        "puck-states": {
+                            "links": {
+                                "related": "/api/pucks/0112bbb1-4563-5d9f-7e62-caee4a0512cb/puck-states"
+                            }
+                        },
+                        "hardware-version": {
+                            "links": {
+                                "related": "/api/pucks/0112bbb1-4563-5d9f-7e62-caee4a0512cb/hardware-version"
+                            },
+                            "data": {
+                                "type": "hardware-versions",
+                                "id": "a4f4714e-b089-44b4-80a1-4462612f321e"
+                            }
+                        },
+                        "structure": {
+                            "links": {
+                                "self": "/api/pucks/0112bbb1-4563-5d9f-7e62-caee4a0512cb/relationships/structure",
+                                "related": "/api/pucks/0112bbb1-4563-5d9f-7e62-caee4a0512cb/structure"
+                            },
+                            "data": {
+                                "type": "structures",
+                                "id": "14573"
+                            }
+                        },
+                        "current-reading": {
+                            "links": {
+                                "related": "/api/pucks/0112bbb1-4563-5d9f-7e62-caee4a0512cb/current-reading"
+                            }
+                        },
+                        "current-state": {
+                            "links": {
+                                "related": "/api/pucks/0112bbb1-4563-5d9f-7e62-caee4a0512cb/current-state"
+                            }
+                        },
+                        "sensor-readings": {
+                            "links": {
+                                "related": "/api/pucks/0112bbb1-4563-5d9f-7e62-caee4a0512cb/sensor-readings"
+                            }
+                        },
+                        "room": {
+                            "links": {
+                                "self": "/api/pucks/0112bbb1-4563-5d9f-7e62-caee4a0512cb/relationships/room",
+                                "related": "/api/pucks/0112bbb1-4563-5d9f-7e62-caee4a0512cb/room"
+                            },
+                            "data": {
+                                "type": "rooms",
+                                "id": "20380"
+                            }
+                        },
+                        "beacon-sightings": {
+                            "links": {
+                                "related": "/api/pucks/0112bbb1-4563-5d9f-7e62-caee4a0512cb/beacon-sightings"
+                            }
+                        }
+                    },
+                    "id": "0112bbb1-4563-5d9f-7e62-caee4a0512cb"
+                },
+                {
+                    "type": "pucks",
+                    "attributes": {
+                        "oauth-app-assigned-at": null,
+                        "reporting-interval-ds": 255,
+                        "current-rssi": -64,
+                        "current-temperature-c": 22.25,
+                        "current-humidity": 31,
+                        "setpoint-bound-high": 32.23,
+                        "updated-at": "2021-03-08T00:10:20.553882+00:00",
+                        "ignore-readings-for-room": false,
+                        "is-gateway": true,
+                        "features": null,
+                        "ir-setup-enabled": null,
+                        "puck-display-color": "white",
+                        "demo-mode": 0,
+                        "created-at": "2019-12-12T18:43:38.642877+00:00",
+                        "sub-ghz-radio-tx-power-mw": null,
+                        "ir-download": false,
+                        "humidity-offset": null,
+                        "display-number": "acc9",
+                        "temperature-offset-override-c": null,
+                        "temperature-offset-c": null,
+                        "name": "Foyer-acc9",
+                        "orientation": "standing",
+                        "bluetooth-tx-power-mw": 500,
+                        "last-reported-as-gateway": true,
+                        "voltage": 3.41,
+                        "inactive": false,
+                        "beacon-interval-ms": 4095,
+                        "locked": false,
+                        "setpoint-bound-low": 10
+                    },
+                    "relationships": {
+                        "closest-vents": {
+                            "links": {
+                                "related": "/api/pucks/acc96a32-3673-599e-15f9-b12afd9b310e/closest-vents"
+                            }
+                        },
+                        "puck-states": {
+                            "links": {
+                                "related": "/api/pucks/acc96a32-3673-599e-15f9-b12afd9b310e/puck-states"
+                            }
+                        },
+                        "hardware-version": {
+                            "links": {
+                                "related": "/api/pucks/acc96a32-3673-599e-15f9-b12afd9b310e/hardware-version"
+                            },
+                            "data": {
+                                "type": "hardware-versions",
+                                "id": "a4f4714e-b089-44b4-80a1-4462612f321e"
+                            }
+                        },
+                        "structure": {
+                            "links": {
+                                "self": "/api/pucks/acc96a32-3673-599e-15f9-b12afd9b310e/relationships/structure",
+                                "related": "/api/pucks/acc96a32-3673-599e-15f9-b12afd9b310e/structure"
+                            },
+                            "data": {
+                                "type": "structures",
+                                "id": "14573"
+                            }
+                        },
+                        "current-reading": {
+                            "links": {
+                                "related": "/api/pucks/acc96a32-3673-599e-15f9-b12afd9b310e/current-reading"
+                            }
+                        },
+                        "current-state": {
+                            "links": {
+                                "related": "/api/pucks/acc96a32-3673-599e-15f9-b12afd9b310e/current-state"
+                            }
+                        },
+                        "sensor-readings": {
+                            "links": {
+                                "related": "/api/pucks/acc96a32-3673-599e-15f9-b12afd9b310e/sensor-readings"
+                            }
+                        },
+                        "room": {
+                            "links": {
+                                "self": "/api/pucks/acc96a32-3673-599e-15f9-b12afd9b310e/relationships/room",
+                                "related": "/api/pucks/acc96a32-3673-599e-15f9-b12afd9b310e/room"
+                            },
+                            "data": {
+                                "type": "rooms",
+                                "id": "20383"
+                            }
+                        },
+                        "beacon-sightings": {
+                            "links": {
+                                "related": "/api/pucks/acc96a32-3673-599e-15f9-b12afd9b310e/beacon-sightings"
+                            }
+                        }
+                    },
+                    "id": "acc96a32-3673-599e-15f9-b12afd9b310e"
+                },
+                {
+                    "type": "pucks",
+                    "attributes": {
+                        "oauth-app-assigned-at": null,
+                        "reporting-interval-ds": 255,
+                        "current-rssi": -47,
+                        "current-temperature-c": 22.76,
+                        "current-humidity": 33,
+                        "setpoint-bound-high": 32.23,
+                        "updated-at": "2021-03-08T00:09:38.855811+00:00",
+                        "ignore-readings-for-room": false,
+                        "is-gateway": true,
+                        "features": null,
+                        "ir-setup-enabled": null,
+                        "puck-display-color": "white",
+                        "demo-mode": 0,
+                        "created-at": "2019-12-12T18:43:32.326250+00:00",
+                        "sub-ghz-radio-tx-power-mw": null,
+                        "ir-download": false,
+                        "humidity-offset": null,
+                        "display-number": "0e6d",
+                        "temperature-offset-override-c": null,
+                        "temperature-offset-c": null,
+                        "name": "VR Room-0e6d",
+                        "orientation": "standing",
+                        "bluetooth-tx-power-mw": 500,
+                        "last-reported-as-gateway": true,
+                        "voltage": 3.42,
+                        "inactive": false,
+                        "beacon-interval-ms": 4095,
+                        "locked": false,
+                        "setpoint-bound-low": 10
+                    },
+                    "relationships": {
+                        "closest-vents": {
+                            "links": {
+                                "related": "/api/pucks/0e6d5a6e-d480-53ae-0599-807446b2af28/closest-vents"
+                            }
+                        },
+                        "puck-states": {
+                            "links": {
+                                "related": "/api/pucks/0e6d5a6e-d480-53ae-0599-807446b2af28/puck-states"
+                            }
+                        },
+                        "hardware-version": {
+                            "links": {
+                                "related": "/api/pucks/0e6d5a6e-d480-53ae-0599-807446b2af28/hardware-version"
+                            },
+                            "data": {
+                                "type": "hardware-versions",
+                                "id": "a4f4714e-b089-44b4-80a1-4462612f321e"
+                            }
+                        },
+                        "structure": {
+                            "links": {
+                                "self": "/api/pucks/0e6d5a6e-d480-53ae-0599-807446b2af28/relationships/structure",
+                                "related": "/api/pucks/0e6d5a6e-d480-53ae-0599-807446b2af28/structure"
+                            },
+                            "data": {
+                                "type": "structures",
+                                "id": "14573"
+                            }
+                        },
+                        "current-reading": {
+                            "links": {
+                                "related": "/api/pucks/0e6d5a6e-d480-53ae-0599-807446b2af28/current-reading"
+                            }
+                        },
+                        "current-state": {
+                            "links": {
+                                "related": "/api/pucks/0e6d5a6e-d480-53ae-0599-807446b2af28/current-state"
+                            }
+                        },
+                        "sensor-readings": {
+                            "links": {
+                                "related": "/api/pucks/0e6d5a6e-d480-53ae-0599-807446b2af28/sensor-readings"
+                            }
+                        },
+                        "room": {
+                            "links": {
+                                "self": "/api/pucks/0e6d5a6e-d480-53ae-0599-807446b2af28/relationships/room",
+                                "related": "/api/pucks/0e6d5a6e-d480-53ae-0599-807446b2af28/room"
+                            },
+                            "data": {
+                                "type": "rooms",
+                                "id": "20374"
+                            }
+                        },
+                        "beacon-sightings": {
+                            "links": {
+                                "related": "/api/pucks/0e6d5a6e-d480-53ae-0599-807446b2af28/beacon-sightings"
+                            }
+                        }
+                    },
+                    "id": "0e6d5a6e-d480-53ae-0599-807446b2af28"
+                },
+                {
+                    "type": "pucks",
+                    "attributes": {
+                        "oauth-app-assigned-at": null,
+                        "reporting-interval-ds": 255,
+                        "current-rssi": -50,
+                        "current-temperature-c": 22.02,
+                        "current-humidity": 34,
+                        "setpoint-bound-high": 32.23,
+                        "updated-at": "2021-03-08T00:10:52.741599+00:00",
+                        "ignore-readings-for-room": false,
+                        "is-gateway": true,
+                        "features": null,
+                        "ir-setup-enabled": null,
+                        "puck-display-color": "white",
+                        "demo-mode": 0,
+                        "created-at": "2019-11-05T19:24:02.847359+00:00",
+                        "sub-ghz-radio-tx-power-mw": null,
+                        "ir-download": false,
+                        "humidity-offset": null,
+                        "display-number": "1826",
+                        "temperature-offset-override-c": null,
+                        "temperature-offset-c": null,
+                        "name": "Master Bedroom-1826",
+                        "orientation": "standing",
+                        "bluetooth-tx-power-mw": 500,
+                        "last-reported-as-gateway": true,
+                        "voltage": 3.41,
+                        "inactive": false,
+                        "beacon-interval-ms": 4095,
+                        "locked": false,
+                        "setpoint-bound-low": 10
+                    },
+                    "relationships": {
+                        "closest-vents": {
+                            "links": {
+                                "related": "/api/pucks/1826a03b-75ba-5315-f09d-994ef188633c/closest-vents"
+                            }
+                        },
+                        "puck-states": {
+                            "links": {
+                                "related": "/api/pucks/1826a03b-75ba-5315-f09d-994ef188633c/puck-states"
+                            }
+                        },
+                        "hardware-version": {
+                            "links": {
+                                "related": "/api/pucks/1826a03b-75ba-5315-f09d-994ef188633c/hardware-version"
+                            },
+                            "data": {
+                                "type": "hardware-versions",
+                                "id": "a4f4714e-b089-44b4-80a1-4462612f321e"
+                            }
+                        },
+                        "structure": {
+                            "links": {
+                                "self": "/api/pucks/1826a03b-75ba-5315-f09d-994ef188633c/relationships/structure",
+                                "related": "/api/pucks/1826a03b-75ba-5315-f09d-994ef188633c/structure"
+                            },
+                            "data": {
+                                "type": "structures",
+                                "id": "14573"
+                            }
+                        },
+                        "current-reading": {
+                            "links": {
+                                "related": "/api/pucks/1826a03b-75ba-5315-f09d-994ef188633c/current-reading"
+                            }
+                        },
+                        "current-state": {
+                            "links": {
+                                "related": "/api/pucks/1826a03b-75ba-5315-f09d-994ef188633c/current-state"
+                            }
+                        },
+                        "sensor-readings": {
+                            "links": {
+                                "related": "/api/pucks/1826a03b-75ba-5315-f09d-994ef188633c/sensor-readings"
+                            }
+                        },
+                        "room": {
+                            "links": {
+                                "self": "/api/pucks/1826a03b-75ba-5315-f09d-994ef188633c/relationships/room",
+                                "related": "/api/pucks/1826a03b-75ba-5315-f09d-994ef188633c/room"
+                            },
+                            "data": {
+                                "type": "rooms",
+                                "id": "20381"
+                            }
+                        },
+                        "beacon-sightings": {
+                            "links": {
+                                "related": "/api/pucks/1826a03b-75ba-5315-f09d-994ef188633c/beacon-sightings"
+                            }
+                        }
+                    },
+                    "id": "1826a03b-75ba-5315-f09d-994ef188633c"
+                },
+                {
+                    "type": "pucks",
+                    "attributes": {
+                        "oauth-app-assigned-at": null,
+                        "reporting-interval-ds": 255,
+                        "current-rssi": -59,
+                        "current-temperature-c": 21,
+                        "current-humidity": 34,
+                        "setpoint-bound-high": 32.23,
+                        "updated-at": "2021-03-08T00:10:10.342875+00:00",
+                        "ignore-readings-for-room": false,
+                        "is-gateway": true,
+                        "features": null,
+                        "ir-setup-enabled": null,
+                        "puck-display-color": "white",
+                        "demo-mode": 0,
+                        "created-at": "2019-11-05T19:19:09.441792+00:00",
+                        "sub-ghz-radio-tx-power-mw": null,
+                        "ir-download": false,
+                        "humidity-offset": null,
+                        "display-number": "4a52",
+                        "temperature-offset-override-c": null,
+                        "temperature-offset-c": null,
+                        "name": "Living Room-4a52",
+                        "orientation": "standing",
+                        "bluetooth-tx-power-mw": 500,
+                        "last-reported-as-gateway": true,
+                        "voltage": 3.41,
+                        "inactive": false,
+                        "beacon-interval-ms": 4095,
+                        "locked": false,
+                        "setpoint-bound-low": 10
+                    },
+                    "relationships": {
+                        "closest-vents": {
+                            "links": {
+                                "related": "/api/pucks/4a52c69a-4361-564d-3908-0800f4fe5b85/closest-vents"
+                            }
+                        },
+                        "puck-states": {
+                            "links": {
+                                "related": "/api/pucks/4a52c69a-4361-564d-3908-0800f4fe5b85/puck-states"
+                            }
+                        },
+                        "hardware-version": {
+                            "links": {
+                                "related": "/api/pucks/4a52c69a-4361-564d-3908-0800f4fe5b85/hardware-version"
+                            },
+                            "data": {
+                                "type": "hardware-versions",
+                                "id": "a4f4714e-b089-44b4-80a1-4462612f321e"
+                            }
+                        },
+                        "structure": {
+                            "links": {
+                                "self": "/api/pucks/4a52c69a-4361-564d-3908-0800f4fe5b85/relationships/structure",
+                                "related": "/api/pucks/4a52c69a-4361-564d-3908-0800f4fe5b85/structure"
+                            },
+                            "data": {
+                                "type": "structures",
+                                "id": "14573"
+                            }
+                        },
+                        "current-reading": {
+                            "links": {
+                                "related": "/api/pucks/4a52c69a-4361-564d-3908-0800f4fe5b85/current-reading"
+                            }
+                        },
+                        "current-state": {
+                            "links": {
+                                "related": "/api/pucks/4a52c69a-4361-564d-3908-0800f4fe5b85/current-state"
+                            }
+                        },
+                        "sensor-readings": {
+                            "links": {
+                                "related": "/api/pucks/4a52c69a-4361-564d-3908-0800f4fe5b85/sensor-readings"
+                            }
+                        },
+                        "room": {
+                            "links": {
+                                "self": "/api/pucks/4a52c69a-4361-564d-3908-0800f4fe5b85/relationships/room",
+                                "related": "/api/pucks/4a52c69a-4361-564d-3908-0800f4fe5b85/room"
+                            },
+                            "data": {
+                                "type": "rooms",
+                                "id": "20384"
+                            }
+                        },
+                        "beacon-sightings": {
+                            "links": {
+                                "related": "/api/pucks/4a52c69a-4361-564d-3908-0800f4fe5b85/beacon-sightings"
+                            }
+                        }
+                    },
+                    "id": "4a52c69a-4361-564d-3908-0800f4fe5b85"
+                },
+                {
+                    "type": "pucks",
+                    "attributes": {
+                        "oauth-app-assigned-at": null,
+                        "reporting-interval-ds": 255,
+                        "current-rssi": -45,
+                        "current-temperature-c": 26.15,
+                        "current-humidity": 30,
+                        "setpoint-bound-high": 32.23,
+                        "updated-at": "2021-03-08T00:11:33.468981+00:00",
+                        "ignore-readings-for-room": false,
+                        "is-gateway": true,
+                        "features": null,
+                        "ir-setup-enabled": null,
+                        "puck-display-color": "white",
+                        "demo-mode": 0,
+                        "created-at": "2019-11-05T19:17:40.317272+00:00",
+                        "sub-ghz-radio-tx-power-mw": null,
+                        "ir-download": false,
+                        "humidity-offset": null,
+                        "display-number": "4c93",
+                        "temperature-offset-override-c": -4.99,
+                        "temperature-offset-c": -4.99,
+                        "name": "Office-4c93",
+                        "orientation": "standing",
+                        "bluetooth-tx-power-mw": 500,
+                        "last-reported-as-gateway": true,
+                        "voltage": 3.43,
+                        "inactive": false,
+                        "beacon-interval-ms": 4095,
+                        "locked": false,
+                        "setpoint-bound-low": 10
+                    },
+                    "relationships": {
+                        "closest-vents": {
+                            "links": {
+                                "related": "/api/pucks/4c938695-4658-50f2-ef9b-460ee5038fa1/closest-vents"
+                            }
+                        },
+                        "puck-states": {
+                            "links": {
+                                "related": "/api/pucks/4c938695-4658-50f2-ef9b-460ee5038fa1/puck-states"
+                            }
+                        },
+                        "hardware-version": {
+                            "links": {
+                                "related": "/api/pucks/4c938695-4658-50f2-ef9b-460ee5038fa1/hardware-version"
+                            },
+                            "data": {
+                                "type": "hardware-versions",
+                                "id": "a4f4714e-b089-44b4-80a1-4462612f321e"
+                            }
+                        },
+                        "structure": {
+                            "links": {
+                                "self": "/api/pucks/4c938695-4658-50f2-ef9b-460ee5038fa1/relationships/structure",
+                                "related": "/api/pucks/4c938695-4658-50f2-ef9b-460ee5038fa1/structure"
+                            },
+                            "data": {
+                                "type": "structures",
+                                "id": "14573"
+                            }
+                        },
+                        "current-reading": {
+                            "links": {
+                                "related": "/api/pucks/4c938695-4658-50f2-ef9b-460ee5038fa1/current-reading"
+                            }
+                        },
+                        "current-state": {
+                            "links": {
+                                "related": "/api/pucks/4c938695-4658-50f2-ef9b-460ee5038fa1/current-state"
+                            }
+                        },
+                        "sensor-readings": {
+                            "links": {
+                                "related": "/api/pucks/4c938695-4658-50f2-ef9b-460ee5038fa1/sensor-readings"
+                            }
+                        },
+                        "room": {
+                            "links": {
+                                "self": "/api/pucks/4c938695-4658-50f2-ef9b-460ee5038fa1/relationships/room",
+                                "related": "/api/pucks/4c938695-4658-50f2-ef9b-460ee5038fa1/room"
+                            },
+                            "data": {
+                                "type": "rooms",
+                                "id": "20385"
+                            }
+                        },
+                        "beacon-sightings": {
+                            "links": {
+                                "related": "/api/pucks/4c938695-4658-50f2-ef9b-460ee5038fa1/beacon-sightings"
+                            }
+                        }
+                    },
+                    "id": "4c938695-4658-50f2-ef9b-460ee5038fa1"
+                }
+            ]
+        },
+        "rawHeaders": [
+            "Date",
+            "Mon, 08 Mar 2021 00:14:11 GMT",
+            "Content-Type",
+            "application/json; charset=utf-8",
+            "Transfer-Encoding",
+            "chunked",
+            "Connection",
+            "close",
+            "Server",
+            "gunicorn/20.0.4",
+            "Access-Control-Allow-Origin",
+            "*",
+            "Access-Control-Max-Age",
+            "21600",
+            "Access-Control-Allow-Headers",
+            "authorization, content-type, accept, x-admin-mode, user-agent",
+            "Access-Control-Allow-Credentials",
+            "true"
+        ],
+        "responseIsBinary": false
+    },
+    {
+        "scope": "https://api.flair.co:443",
+        "method": "GET",
+        "path": "/api/pucks/0112bbb1-4563-5d9f-7e62-caee4a0512cb/current-reading",
+        "body": "",
+        "status": 200,
+        "response": {
+            "meta": {
+                "self": "/api/pucks/0112bbb1-4563-5d9f-7e62-caee4a0512cb/current-reading"
+            },
+            "data": {
+                "type": "sensor-readings",
+                "attributes": {
+                    "room-temperature-c": 21.92,
+                    "temperature": 2692,
+                    "system-voltage": 3.41,
+                    "room-pressure": 100.94625,
+                    "firmware-version-s": 135,
+                    "rssi": -68,
+                    "rotary-encoded-clicks": 0,
+                    "humidity": 34,
+                    "light": 289,
+                    "current-offset": -500,
+                    "firmware-version-w": 126,
+                    "button-pushes": 0,
+                    "desired-temperature-c": 18.34,
+                    "created-at": "2021-03-08T00:14:07.401662+00:00",
+                    "firmware-version-b": 1,
+                    "is-gateway": true,
+                    "message-version": 0,
+                    "die-temperature": 3800
+                },
+                "id": "1b5afdc7-5b4e-496e-b337-8c2c024d2bb8",
+                "relationships": {
+                    "puck": {
+                        "links": {
+                            "related": "/api/sensor-readings/1b5afdc7-5b4e-496e-b337-8c2c024d2bb8/puck"
+                        },
+                        "data": {
+                            "type": "pucks",
+                            "id": "0112bbb1-4563-5d9f-7e62-caee4a0512cb"
+                        }
+                    }
+                }
+            }
+        },
+        "rawHeaders": [
+            "Date",
+            "Mon, 08 Mar 2021 00:14:11 GMT",
+            "Content-Type",
+            "application/json; charset=utf-8",
+            "Transfer-Encoding",
+            "chunked",
+            "Connection",
+            "close",
+            "Server",
+            "gunicorn/20.0.4",
+            "Access-Control-Allow-Origin",
+            "*",
+            "Access-Control-Max-Age",
+            "21600",
+            "Access-Control-Allow-Headers",
+            "authorization, content-type, accept, x-admin-mode, user-agent",
+            "Access-Control-Allow-Credentials",
+            "true"
+        ],
+        "responseIsBinary": false
+    }
+]

@@ -44,6 +44,13 @@ export class Client {
         client_id: string;
     };
 
+    /**
+     * 
+     * @param client_id 
+     * @param client_secret 
+     * @param username 
+     * @param password 
+     */
     constructor(client_id: string, client_secret: string, username: string, password: string) {
       this.passwordTokenConfig = {
         username: username,
@@ -82,6 +89,8 @@ export class Client {
     /**
      * Updates the access token saved in memory if we have a refresh token
      * otherwise gets a refresh token
+     *
+     * @returns Promise<Token>
      */
     private async updateAccessToken(): Promise<Token> {
       if (this.currentToken === undefined) {
@@ -114,6 +123,10 @@ export class Client {
       this.client.defaults.headers.common.Authorization = this.currentToken!.token_type + ' ' + this.currentToken!.access_token;
     }
 
+    /**
+     * 
+     * @returns Promise<[User]>
+     */
     public async getUsers(): Promise<[User]> {
       await this.updateClient();
       const response = await this.client.get('/api/users');
@@ -123,6 +136,10 @@ export class Client {
       });
     }
 
+    /**
+     * 
+     * @returns 
+     */
     public async getPucks(): Promise<[Puck]> {
       await this.updateClient();
       const response = await this.client.get('/api/pucks');
@@ -132,6 +149,10 @@ export class Client {
       });
     }
 
+    /**
+     * 
+     * @returns 
+     */
     public async getVents(): Promise<[Vent]> {
       await this.updateClient();
       const response = await this.client.get('/api/vents');
@@ -141,6 +162,11 @@ export class Client {
       });
     }
 
+    /**
+     * 
+     * @param vent 
+     * @returns 
+     */
     public async getVentReading(vent: Vent): Promise<Vent> {
       await this.updateClient();
       const response = await this.client.get(`/api/vents/${vent.id}/current-reading`);
@@ -148,6 +174,12 @@ export class Client {
       return vent;
     }
 
+    /**
+     * 
+     * @param vent 
+     * @param percentOpen 
+     * @returns 
+     */
     public async setVentPercentOpen(vent: Vent, percentOpen: number): Promise<Vent> {
       await this.updateClient();
       const response = await this.client.patch(`/api/vents/${vent.id}`, {
@@ -163,6 +195,11 @@ export class Client {
       return vent;
     }
 
+    /**
+     * 
+     * @param puck 
+     * @returns 
+     */
     public async getPuckReading(puck: Puck): Promise<Puck> {
       await this.updateClient();
       const response = await this.client.get(`/api/pucks/${puck.id}/current-reading`);
@@ -170,6 +207,10 @@ export class Client {
       return puck;
     }
 
+    /**
+     * 
+     * @returns 
+     */
     public async getRooms(): Promise<[Room]> {
       await this.updateClient();
       const response = await this.client.get('/api/rooms');
@@ -179,6 +220,11 @@ export class Client {
       });
     }
 
+    /**
+     * 
+     * @param room 
+     * @returns 
+     */
     public async getRoom(room: Room): Promise<Room> {
       await this.updateClient();
       const response = await this.client.get(`/api/rooms/${room.id}`);
@@ -186,6 +232,12 @@ export class Client {
       return room.fromJSON(response.data.data);
     }
 
+    /**
+     * 
+     * @param room 
+     * @param setPointC 
+     * @returns 
+     */
     public async setRoomSetPoint(room: Room, setPointC: number): Promise<Room> {
       await this.updateClient();
       const response = await this.client.patch(`/api/rooms/${room.id}`, {
@@ -201,6 +253,10 @@ export class Client {
       return room;
     }
 
+    /**
+     * 
+     * @returns 
+     */
     public async getStructures(): Promise<[Structure]> {
       await this.updateClient();
       const response = await this.client.get('/api/structures');
@@ -210,7 +266,11 @@ export class Client {
       });
     }
 
-
+    /**
+     * 
+     * @param structure 
+     * @returns 
+     */
     public async getStructure(structure: Structure): Promise<Structure> {
       await this.updateClient();
       const response = await this.client.get(`/api/structures/${structure.id}`);
@@ -218,6 +278,10 @@ export class Client {
       return structure.fromJSON(response.data.data);
     }
 
+    /**
+     * 
+     * @returns 
+     */
     public async getPrimaryStructure(): Promise<Structure> {
       await this.updateClient();
       return (await this.getStructures()).find((structure: Structure) => {
@@ -225,6 +289,12 @@ export class Client {
       })!;
     }
 
+    /**
+     * 
+     * @param structure 
+     * @param mode 
+     * @returns 
+     */
     public async setStructureMode(structure: Structure, mode: FlairMode): Promise<Structure> {
       await this.updateClient();
       const response = await this.client.patch(`/api/structures/${structure.id}`, {
@@ -239,6 +309,12 @@ export class Client {
       return structure.fromJSON(response.data.data);
     }
 
+    /**
+     * 
+     * @param structure 
+     * @param mode 
+     * @returns 
+     */
     public async setStructureHeatingCoolMode(structure: Structure, mode: StructureHeatCoolMode): Promise<Structure> {
       await this.updateClient();
       const response = await this.client.patch(`/api/structures/${structure.id}`, {

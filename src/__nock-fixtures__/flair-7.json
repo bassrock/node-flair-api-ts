@@ -1,0 +1,1247 @@
+[
+    {
+        "scope": "https://api.flair.co:443",
+        "method": "POST",
+        "path": "/oauth/token?client_id=test_client_id&client_secret=test_client_secret&grant_type=password&password=test_password&scope=structures.edit%20structures.view%20pucks.view%20pucks.edit%20vents.view%20vents.edit%20users.view&username=test_username",
+        "body": "",
+        "status": 200,
+        "response": {
+            "access_token": "test_access_token",
+            "expires_in": 3600,
+            "token_type": "Bearer",
+            "scope": "structures.edit structures.view pucks.view pucks.edit vents.view vents.edit users.view",
+            "refresh_token": "test_refresh_token"
+        },
+        "rawHeaders": [
+            "Date",
+            "Mon, 08 Mar 2021 00:14:16 GMT",
+            "Content-Type",
+            "application/json",
+            "Content-Length",
+            "244",
+            "Connection",
+            "close",
+            "Server",
+            "gunicorn/20.0.4",
+            "Cache-Control",
+            "no-store",
+            "Pragma",
+            "no-cache",
+            "Access-Control-Allow-Origin",
+            "*"
+        ],
+        "responseIsBinary": false
+    },
+    {
+        "scope": "https://api.flair.co:443",
+        "method": "GET",
+        "path": "/api/rooms",
+        "body": "",
+        "status": 200,
+        "response": {
+            "meta": {
+                "self": "/api/rooms",
+                "first": "/api/rooms?include=&page%5Bsize%5D=50&page%5Bpage%5D=1",
+                "last": "/api/rooms?include=&page%5Bsize%5D=50&page%5Bpage%5D=1",
+                "next": null,
+                "prev": null
+            },
+            "data": [
+                {
+                    "type": "rooms",
+                    "attributes": {
+                        "level": null,
+                        "room-type": null,
+                        "created-at": "2020-04-30T23:16:55.170679+00:00",
+                        "preheat-precool": true,
+                        "active": true,
+                        "humidity-away-min": 10,
+                        "temp-away-min-c": 16,
+                        "temp-away-max-c": 22.5,
+                        "name": "Upstairs Bathroom",
+                        "humidity-away-max": 80,
+                        "air-return": false,
+                        "set-point-c": 24,
+                        "current-humidity": null,
+                        "set-point-manual": true,
+                        "pucks-inactive": "NotSetup",
+                        "state-updated-at": "2021-03-07T23:59:25.094535+00:00",
+                        "room-away-mode": "Smart Away",
+                        "hold-until": "2107-12-10T23:59:25.076875+00:00",
+                        "hold-until-schedule-event": false,
+                        "hold-reason": "Set by Daniel",
+                        "current-temperature-c": null,
+                        "occupancy-mode": "Flair Auto",
+                        "windows": null,
+                        "updated-at": "2021-03-08T00:09:22.795149+00:00",
+                        "frozen-pipe-pet-protect": true
+                    },
+                    "relationships": {
+                        "puck-apps": {
+                            "links": {
+                                "self": "/api/rooms/20389/relationships/puck-apps",
+                                "related": "/api/rooms/20389/puck-apps"
+                            }
+                        },
+                        "occupancy-conclusions": {
+                            "links": {
+                                "related": "/api/rooms/20389/occupancy-conclusions"
+                            }
+                        },
+                        "zones": {
+                            "links": {
+                                "self": "/api/rooms/20389/relationships/zones",
+                                "related": "/api/rooms/20389/zones"
+                            },
+                            "data": [
+                                {
+                                    "type": "zones",
+                                    "id": "56142"
+                                }
+                            ]
+                        },
+                        "hvac-units": {
+                            "links": {
+                                "self": "/api/rooms/20389/relationships/hvac-units",
+                                "related": "/api/rooms/20389/hvac-units"
+                            },
+                            "data": []
+                        },
+                        "structure": {
+                            "links": {
+                                "self": "/api/rooms/20389/relationships/structure",
+                                "related": "/api/rooms/20389/structure"
+                            },
+                            "data": {
+                                "type": "structures",
+                                "id": "14573"
+                            }
+                        },
+                        "room-auto-conclusions": {
+                            "links": {
+                                "related": "/api/rooms/20389/room-auto-conclusions"
+                            }
+                        },
+                        "pucks": {
+                            "links": {
+                                "self": "/api/rooms/20389/relationships/pucks",
+                                "related": "/api/rooms/20389/pucks"
+                            },
+                            "data": []
+                        },
+                        "room-states": {
+                            "links": {
+                                "related": "/api/rooms/20389/room-states"
+                            }
+                        },
+                        "bridges": {
+                            "links": {
+                                "self": "/api/rooms/20389/relationships/bridges",
+                                "related": "/api/rooms/20389/bridges"
+                            },
+                            "data": []
+                        },
+                        "thermostat": {
+                            "links": {
+                                "self": "/api/rooms/20389/relationships/thermostat",
+                                "related": "/api/rooms/20389/thermostat"
+                            },
+                            "data": {
+                                "type": "thermostats",
+                                "id": null
+                            }
+                        },
+                        "current-conclusions": {
+                            "links": {
+                                "related": "/api/rooms/20389/current-conclusions"
+                            }
+                        },
+                        "vents": {
+                            "links": {
+                                "self": "/api/rooms/20389/relationships/vents",
+                                "related": "/api/rooms/20389/vents"
+                            },
+                            "data": [
+                                {
+                                    "type": "vents",
+                                    "id": "a9059032-84a4-5b42-3c1e-128b49fa702d"
+                                }
+                            ]
+                        },
+                        "remote-sensors": {
+                            "links": {
+                                "self": "/api/rooms/20389/relationships/remote-sensors",
+                                "related": "/api/rooms/20389/remote-sensors"
+                            },
+                            "data": []
+                        },
+                        "occupants": {
+                            "links": {
+                                "self": "/api/rooms/20389/relationships/occupants",
+                                "related": "/api/rooms/20389/occupants"
+                            }
+                        }
+                    },
+                    "id": "20389"
+                },
+                {
+                    "type": "rooms",
+                    "attributes": {
+                        "level": null,
+                        "room-type": null,
+                        "created-at": "2020-04-30T22:49:41.806881+00:00",
+                        "preheat-precool": true,
+                        "active": true,
+                        "humidity-away-min": 10,
+                        "temp-away-min-c": 16,
+                        "temp-away-max-c": 22.5,
+                        "name": "Office",
+                        "humidity-away-max": 80,
+                        "air-return": false,
+                        "set-point-c": 20.01,
+                        "current-humidity": 30,
+                        "set-point-manual": true,
+                        "pucks-inactive": "Active",
+                        "state-updated-at": "2021-01-24T21:35:46.125934+00:00",
+                        "room-away-mode": "Smart Away",
+                        "hold-until": "2107-10-29T21:35:46.101272+00:00",
+                        "hold-until-schedule-event": false,
+                        "hold-reason": "PuckActivity",
+                        "current-temperature-c": 26.15,
+                        "occupancy-mode": "Flair Auto",
+                        "windows": null,
+                        "updated-at": "2021-03-08T00:09:22.682658+00:00",
+                        "frozen-pipe-pet-protect": true
+                    },
+                    "relationships": {
+                        "puck-apps": {
+                            "links": {
+                                "self": "/api/rooms/20385/relationships/puck-apps",
+                                "related": "/api/rooms/20385/puck-apps"
+                            }
+                        },
+                        "occupancy-conclusions": {
+                            "links": {
+                                "related": "/api/rooms/20385/occupancy-conclusions"
+                            }
+                        },
+                        "zones": {
+                            "links": {
+                                "self": "/api/rooms/20385/relationships/zones",
+                                "related": "/api/rooms/20385/zones"
+                            },
+                            "data": [
+                                {
+                                    "type": "zones",
+                                    "id": "56142"
+                                }
+                            ]
+                        },
+                        "hvac-units": {
+                            "links": {
+                                "self": "/api/rooms/20385/relationships/hvac-units",
+                                "related": "/api/rooms/20385/hvac-units"
+                            },
+                            "data": []
+                        },
+                        "structure": {
+                            "links": {
+                                "self": "/api/rooms/20385/relationships/structure",
+                                "related": "/api/rooms/20385/structure"
+                            },
+                            "data": {
+                                "type": "structures",
+                                "id": "14573"
+                            }
+                        },
+                        "room-auto-conclusions": {
+                            "links": {
+                                "related": "/api/rooms/20385/room-auto-conclusions"
+                            }
+                        },
+                        "pucks": {
+                            "links": {
+                                "self": "/api/rooms/20385/relationships/pucks",
+                                "related": "/api/rooms/20385/pucks"
+                            },
+                            "data": [
+                                {
+                                    "type": "pucks",
+                                    "id": "4c938695-4658-50f2-ef9b-460ee5038fa1"
+                                }
+                            ]
+                        },
+                        "room-states": {
+                            "links": {
+                                "related": "/api/rooms/20385/room-states"
+                            }
+                        },
+                        "bridges": {
+                            "links": {
+                                "self": "/api/rooms/20385/relationships/bridges",
+                                "related": "/api/rooms/20385/bridges"
+                            },
+                            "data": []
+                        },
+                        "thermostat": {
+                            "links": {
+                                "self": "/api/rooms/20385/relationships/thermostat",
+                                "related": "/api/rooms/20385/thermostat"
+                            },
+                            "data": {
+                                "type": "thermostats",
+                                "id": null
+                            }
+                        },
+                        "current-conclusions": {
+                            "links": {
+                                "related": "/api/rooms/20385/current-conclusions"
+                            }
+                        },
+                        "vents": {
+                            "links": {
+                                "self": "/api/rooms/20385/relationships/vents",
+                                "related": "/api/rooms/20385/vents"
+                            },
+                            "data": []
+                        },
+                        "remote-sensors": {
+                            "links": {
+                                "self": "/api/rooms/20385/relationships/remote-sensors",
+                                "related": "/api/rooms/20385/remote-sensors"
+                            },
+                            "data": []
+                        },
+                        "occupants": {
+                            "links": {
+                                "self": "/api/rooms/20385/relationships/occupants",
+                                "related": "/api/rooms/20385/occupants"
+                            }
+                        }
+                    },
+                    "id": "20385"
+                },
+                {
+                    "type": "rooms",
+                    "attributes": {
+                        "level": null,
+                        "room-type": null,
+                        "created-at": "2020-04-30T22:49:07.620847+00:00",
+                        "preheat-precool": true,
+                        "active": true,
+                        "humidity-away-min": 10,
+                        "temp-away-min-c": 16,
+                        "temp-away-max-c": 22.5,
+                        "name": "Living Room",
+                        "humidity-away-max": 80,
+                        "air-return": false,
+                        "set-point-c": 23.34,
+                        "current-humidity": 34,
+                        "set-point-manual": true,
+                        "pucks-inactive": "Active",
+                        "state-updated-at": "2020-07-26T03:59:29.163689+00:00",
+                        "room-away-mode": "Smart Away",
+                        "hold-until": "2107-04-30T03:59:29.089532+00:00",
+                        "hold-until-schedule-event": false,
+                        "hold-reason": "Set by Daniel",
+                        "current-temperature-c": 21,
+                        "occupancy-mode": "Flair Auto",
+                        "windows": null,
+                        "updated-at": "2021-03-08T00:09:22.865638+00:00",
+                        "frozen-pipe-pet-protect": true
+                    },
+                    "relationships": {
+                        "puck-apps": {
+                            "links": {
+                                "self": "/api/rooms/20384/relationships/puck-apps",
+                                "related": "/api/rooms/20384/puck-apps"
+                            }
+                        },
+                        "occupancy-conclusions": {
+                            "links": {
+                                "related": "/api/rooms/20384/occupancy-conclusions"
+                            }
+                        },
+                        "zones": {
+                            "links": {
+                                "self": "/api/rooms/20384/relationships/zones",
+                                "related": "/api/rooms/20384/zones"
+                            },
+                            "data": [
+                                {
+                                    "type": "zones",
+                                    "id": "56142"
+                                }
+                            ]
+                        },
+                        "hvac-units": {
+                            "links": {
+                                "self": "/api/rooms/20384/relationships/hvac-units",
+                                "related": "/api/rooms/20384/hvac-units"
+                            },
+                            "data": []
+                        },
+                        "structure": {
+                            "links": {
+                                "self": "/api/rooms/20384/relationships/structure",
+                                "related": "/api/rooms/20384/structure"
+                            },
+                            "data": {
+                                "type": "structures",
+                                "id": "14573"
+                            }
+                        },
+                        "room-auto-conclusions": {
+                            "links": {
+                                "related": "/api/rooms/20384/room-auto-conclusions"
+                            }
+                        },
+                        "pucks": {
+                            "links": {
+                                "self": "/api/rooms/20384/relationships/pucks",
+                                "related": "/api/rooms/20384/pucks"
+                            },
+                            "data": [
+                                {
+                                    "type": "pucks",
+                                    "id": "4a52c69a-4361-564d-3908-0800f4fe5b85"
+                                }
+                            ]
+                        },
+                        "room-states": {
+                            "links": {
+                                "related": "/api/rooms/20384/room-states"
+                            }
+                        },
+                        "bridges": {
+                            "links": {
+                                "self": "/api/rooms/20384/relationships/bridges",
+                                "related": "/api/rooms/20384/bridges"
+                            },
+                            "data": []
+                        },
+                        "thermostat": {
+                            "links": {
+                                "self": "/api/rooms/20384/relationships/thermostat",
+                                "related": "/api/rooms/20384/thermostat"
+                            },
+                            "data": {
+                                "type": "thermostats",
+                                "id": null
+                            }
+                        },
+                        "current-conclusions": {
+                            "links": {
+                                "related": "/api/rooms/20384/current-conclusions"
+                            }
+                        },
+                        "vents": {
+                            "links": {
+                                "self": "/api/rooms/20384/relationships/vents",
+                                "related": "/api/rooms/20384/vents"
+                            },
+                            "data": [
+                                {
+                                    "type": "vents",
+                                    "id": "af2247a1-db29-5fb2-684a-028f998e1232"
+                                },
+                                {
+                                    "type": "vents",
+                                    "id": "bcde6acc-aaf0-5bce-6e50-52231f752806"
+                                },
+                                {
+                                    "type": "vents",
+                                    "id": "cafd4ca0-be68-550c-4d48-cecc07741d8d"
+                                }
+                            ]
+                        },
+                        "remote-sensors": {
+                            "links": {
+                                "self": "/api/rooms/20384/relationships/remote-sensors",
+                                "related": "/api/rooms/20384/remote-sensors"
+                            },
+                            "data": []
+                        },
+                        "occupants": {
+                            "links": {
+                                "self": "/api/rooms/20384/relationships/occupants",
+                                "related": "/api/rooms/20384/occupants"
+                            }
+                        }
+                    },
+                    "id": "20384"
+                },
+                {
+                    "type": "rooms",
+                    "attributes": {
+                        "level": null,
+                        "room-type": null,
+                        "created-at": "2020-04-30T22:47:39.309072+00:00",
+                        "preheat-precool": true,
+                        "active": true,
+                        "humidity-away-min": 10,
+                        "temp-away-min-c": 16,
+                        "temp-away-max-c": 22.5,
+                        "name": "Foyer",
+                        "humidity-away-max": 80,
+                        "air-return": false,
+                        "set-point-c": 23.34,
+                        "current-humidity": 31,
+                        "set-point-manual": true,
+                        "pucks-inactive": "Active",
+                        "state-updated-at": "2020-07-26T03:59:20.537498+00:00",
+                        "room-away-mode": "Smart Away",
+                        "hold-until": "2107-04-30T03:59:20.309295+00:00",
+                        "hold-until-schedule-event": false,
+                        "hold-reason": "Set by Daniel",
+                        "current-temperature-c": 22.25,
+                        "occupancy-mode": "Flair Auto",
+                        "windows": null,
+                        "updated-at": "2021-03-08T00:09:22.700988+00:00",
+                        "frozen-pipe-pet-protect": true
+                    },
+                    "relationships": {
+                        "puck-apps": {
+                            "links": {
+                                "self": "/api/rooms/20383/relationships/puck-apps",
+                                "related": "/api/rooms/20383/puck-apps"
+                            }
+                        },
+                        "occupancy-conclusions": {
+                            "links": {
+                                "related": "/api/rooms/20383/occupancy-conclusions"
+                            }
+                        },
+                        "zones": {
+                            "links": {
+                                "self": "/api/rooms/20383/relationships/zones",
+                                "related": "/api/rooms/20383/zones"
+                            },
+                            "data": [
+                                {
+                                    "type": "zones",
+                                    "id": "56142"
+                                }
+                            ]
+                        },
+                        "hvac-units": {
+                            "links": {
+                                "self": "/api/rooms/20383/relationships/hvac-units",
+                                "related": "/api/rooms/20383/hvac-units"
+                            },
+                            "data": []
+                        },
+                        "structure": {
+                            "links": {
+                                "self": "/api/rooms/20383/relationships/structure",
+                                "related": "/api/rooms/20383/structure"
+                            },
+                            "data": {
+                                "type": "structures",
+                                "id": "14573"
+                            }
+                        },
+                        "room-auto-conclusions": {
+                            "links": {
+                                "related": "/api/rooms/20383/room-auto-conclusions"
+                            }
+                        },
+                        "pucks": {
+                            "links": {
+                                "self": "/api/rooms/20383/relationships/pucks",
+                                "related": "/api/rooms/20383/pucks"
+                            },
+                            "data": [
+                                {
+                                    "type": "pucks",
+                                    "id": "acc96a32-3673-599e-15f9-b12afd9b310e"
+                                }
+                            ]
+                        },
+                        "room-states": {
+                            "links": {
+                                "related": "/api/rooms/20383/room-states"
+                            }
+                        },
+                        "bridges": {
+                            "links": {
+                                "self": "/api/rooms/20383/relationships/bridges",
+                                "related": "/api/rooms/20383/bridges"
+                            },
+                            "data": []
+                        },
+                        "thermostat": {
+                            "links": {
+                                "self": "/api/rooms/20383/relationships/thermostat",
+                                "related": "/api/rooms/20383/thermostat"
+                            },
+                            "data": {
+                                "type": "thermostats",
+                                "id": "b6ae80ef-e0f7-49ed-b434-7c6e77640ede"
+                            }
+                        },
+                        "current-conclusions": {
+                            "links": {
+                                "related": "/api/rooms/20383/current-conclusions"
+                            }
+                        },
+                        "vents": {
+                            "links": {
+                                "self": "/api/rooms/20383/relationships/vents",
+                                "related": "/api/rooms/20383/vents"
+                            },
+                            "data": [
+                                {
+                                    "type": "vents",
+                                    "id": "b765eddd-ce50-50bd-c6d4-d3857096ca0d"
+                                },
+                                {
+                                    "type": "vents",
+                                    "id": "642595ff-4ea1-5a1a-d846-ff4434e3d822"
+                                }
+                            ]
+                        },
+                        "remote-sensors": {
+                            "links": {
+                                "self": "/api/rooms/20383/relationships/remote-sensors",
+                                "related": "/api/rooms/20383/remote-sensors"
+                            },
+                            "data": []
+                        },
+                        "occupants": {
+                            "links": {
+                                "self": "/api/rooms/20383/relationships/occupants",
+                                "related": "/api/rooms/20383/occupants"
+                            }
+                        }
+                    },
+                    "id": "20383"
+                },
+                {
+                    "type": "rooms",
+                    "attributes": {
+                        "level": null,
+                        "room-type": null,
+                        "created-at": "2020-04-30T22:45:30.480007+00:00",
+                        "preheat-precool": true,
+                        "active": true,
+                        "humidity-away-min": 10,
+                        "temp-away-min-c": 16,
+                        "temp-away-max-c": 22.5,
+                        "name": "Master Bedroom",
+                        "humidity-away-max": 80,
+                        "air-return": false,
+                        "set-point-c": 20.56,
+                        "current-humidity": 34,
+                        "set-point-manual": true,
+                        "pucks-inactive": "Active",
+                        "state-updated-at": "2021-01-23T20:43:07.678970+00:00",
+                        "room-away-mode": "Smart Away",
+                        "hold-until": "2107-10-28T20:43:07.648774+00:00",
+                        "hold-until-schedule-event": false,
+                        "hold-reason": "PuckActivity",
+                        "current-temperature-c": 22.02,
+                        "occupancy-mode": "Flair Auto",
+                        "windows": null,
+                        "updated-at": "2021-03-08T00:09:22.961391+00:00",
+                        "frozen-pipe-pet-protect": true
+                    },
+                    "relationships": {
+                        "puck-apps": {
+                            "links": {
+                                "self": "/api/rooms/20381/relationships/puck-apps",
+                                "related": "/api/rooms/20381/puck-apps"
+                            }
+                        },
+                        "occupancy-conclusions": {
+                            "links": {
+                                "related": "/api/rooms/20381/occupancy-conclusions"
+                            }
+                        },
+                        "zones": {
+                            "links": {
+                                "self": "/api/rooms/20381/relationships/zones",
+                                "related": "/api/rooms/20381/zones"
+                            },
+                            "data": [
+                                {
+                                    "type": "zones",
+                                    "id": "56142"
+                                }
+                            ]
+                        },
+                        "hvac-units": {
+                            "links": {
+                                "self": "/api/rooms/20381/relationships/hvac-units",
+                                "related": "/api/rooms/20381/hvac-units"
+                            },
+                            "data": []
+                        },
+                        "structure": {
+                            "links": {
+                                "self": "/api/rooms/20381/relationships/structure",
+                                "related": "/api/rooms/20381/structure"
+                            },
+                            "data": {
+                                "type": "structures",
+                                "id": "14573"
+                            }
+                        },
+                        "room-auto-conclusions": {
+                            "links": {
+                                "related": "/api/rooms/20381/room-auto-conclusions"
+                            }
+                        },
+                        "pucks": {
+                            "links": {
+                                "self": "/api/rooms/20381/relationships/pucks",
+                                "related": "/api/rooms/20381/pucks"
+                            },
+                            "data": [
+                                {
+                                    "type": "pucks",
+                                    "id": "1826a03b-75ba-5315-f09d-994ef188633c"
+                                }
+                            ]
+                        },
+                        "room-states": {
+                            "links": {
+                                "related": "/api/rooms/20381/room-states"
+                            }
+                        },
+                        "bridges": {
+                            "links": {
+                                "self": "/api/rooms/20381/relationships/bridges",
+                                "related": "/api/rooms/20381/bridges"
+                            },
+                            "data": []
+                        },
+                        "thermostat": {
+                            "links": {
+                                "self": "/api/rooms/20381/relationships/thermostat",
+                                "related": "/api/rooms/20381/thermostat"
+                            },
+                            "data": {
+                                "type": "thermostats",
+                                "id": null
+                            }
+                        },
+                        "current-conclusions": {
+                            "links": {
+                                "related": "/api/rooms/20381/current-conclusions"
+                            }
+                        },
+                        "vents": {
+                            "links": {
+                                "self": "/api/rooms/20381/relationships/vents",
+                                "related": "/api/rooms/20381/vents"
+                            },
+                            "data": [
+                                {
+                                    "type": "vents",
+                                    "id": "0858ef5b-676c-534b-5cbd-3773d5942947"
+                                },
+                                {
+                                    "type": "vents",
+                                    "id": "7d535779-f868-5d4c-1fb5-2fef4762688e"
+                                }
+                            ]
+                        },
+                        "remote-sensors": {
+                            "links": {
+                                "self": "/api/rooms/20381/relationships/remote-sensors",
+                                "related": "/api/rooms/20381/remote-sensors"
+                            },
+                            "data": []
+                        },
+                        "occupants": {
+                            "links": {
+                                "self": "/api/rooms/20381/relationships/occupants",
+                                "related": "/api/rooms/20381/occupants"
+                            }
+                        }
+                    },
+                    "id": "20381"
+                },
+                {
+                    "type": "rooms",
+                    "attributes": {
+                        "level": null,
+                        "room-type": null,
+                        "created-at": "2020-04-30T22:44:22.891489+00:00",
+                        "preheat-precool": true,
+                        "active": true,
+                        "humidity-away-min": 10,
+                        "temp-away-min-c": 16,
+                        "temp-away-max-c": 22.5,
+                        "name": "Guest Room",
+                        "humidity-away-max": 80,
+                        "air-return": false,
+                        "set-point-c": 18.34,
+                        "current-humidity": 34,
+                        "set-point-manual": true,
+                        "pucks-inactive": "Active",
+                        "state-updated-at": "2021-01-24T21:28:10.019481+00:00",
+                        "room-away-mode": "Smart Away",
+                        "hold-until": "2107-10-29T21:28:09.992742+00:00",
+                        "hold-until-schedule-event": false,
+                        "hold-reason": "PuckActivity",
+                        "current-temperature-c": 21.92,
+                        "occupancy-mode": "Flair Auto",
+                        "windows": null,
+                        "updated-at": "2021-03-08T00:09:22.776749+00:00",
+                        "frozen-pipe-pet-protect": true
+                    },
+                    "relationships": {
+                        "puck-apps": {
+                            "links": {
+                                "self": "/api/rooms/20380/relationships/puck-apps",
+                                "related": "/api/rooms/20380/puck-apps"
+                            }
+                        },
+                        "occupancy-conclusions": {
+                            "links": {
+                                "related": "/api/rooms/20380/occupancy-conclusions"
+                            }
+                        },
+                        "zones": {
+                            "links": {
+                                "self": "/api/rooms/20380/relationships/zones",
+                                "related": "/api/rooms/20380/zones"
+                            },
+                            "data": [
+                                {
+                                    "type": "zones",
+                                    "id": "56142"
+                                }
+                            ]
+                        },
+                        "hvac-units": {
+                            "links": {
+                                "self": "/api/rooms/20380/relationships/hvac-units",
+                                "related": "/api/rooms/20380/hvac-units"
+                            },
+                            "data": []
+                        },
+                        "structure": {
+                            "links": {
+                                "self": "/api/rooms/20380/relationships/structure",
+                                "related": "/api/rooms/20380/structure"
+                            },
+                            "data": {
+                                "type": "structures",
+                                "id": "14573"
+                            }
+                        },
+                        "room-auto-conclusions": {
+                            "links": {
+                                "related": "/api/rooms/20380/room-auto-conclusions"
+                            }
+                        },
+                        "pucks": {
+                            "links": {
+                                "self": "/api/rooms/20380/relationships/pucks",
+                                "related": "/api/rooms/20380/pucks"
+                            },
+                            "data": [
+                                {
+                                    "type": "pucks",
+                                    "id": "0112bbb1-4563-5d9f-7e62-caee4a0512cb"
+                                }
+                            ]
+                        },
+                        "room-states": {
+                            "links": {
+                                "related": "/api/rooms/20380/room-states"
+                            }
+                        },
+                        "bridges": {
+                            "links": {
+                                "self": "/api/rooms/20380/relationships/bridges",
+                                "related": "/api/rooms/20380/bridges"
+                            },
+                            "data": []
+                        },
+                        "thermostat": {
+                            "links": {
+                                "self": "/api/rooms/20380/relationships/thermostat",
+                                "related": "/api/rooms/20380/thermostat"
+                            },
+                            "data": {
+                                "type": "thermostats",
+                                "id": null
+                            }
+                        },
+                        "current-conclusions": {
+                            "links": {
+                                "related": "/api/rooms/20380/current-conclusions"
+                            }
+                        },
+                        "vents": {
+                            "links": {
+                                "self": "/api/rooms/20380/relationships/vents",
+                                "related": "/api/rooms/20380/vents"
+                            },
+                            "data": [
+                                {
+                                    "type": "vents",
+                                    "id": "b085d6ec-d252-584b-b4cb-3c5383f0d95d"
+                                }
+                            ]
+                        },
+                        "remote-sensors": {
+                            "links": {
+                                "self": "/api/rooms/20380/relationships/remote-sensors",
+                                "related": "/api/rooms/20380/remote-sensors"
+                            },
+                            "data": []
+                        },
+                        "occupants": {
+                            "links": {
+                                "self": "/api/rooms/20380/relationships/occupants",
+                                "related": "/api/rooms/20380/occupants"
+                            }
+                        }
+                    },
+                    "id": "20380"
+                },
+                {
+                    "type": "rooms",
+                    "attributes": {
+                        "level": null,
+                        "room-type": null,
+                        "created-at": "2020-04-30T21:37:45.540316+00:00",
+                        "preheat-precool": true,
+                        "active": true,
+                        "humidity-away-min": 10,
+                        "temp-away-min-c": 16,
+                        "temp-away-max-c": 22.5,
+                        "name": "VR Room",
+                        "humidity-away-max": 80,
+                        "air-return": false,
+                        "set-point-c": 20,
+                        "current-humidity": 33,
+                        "set-point-manual": true,
+                        "pucks-inactive": "Active",
+                        "state-updated-at": "2021-01-23T20:39:37.913479+00:00",
+                        "room-away-mode": "Smart Away",
+                        "hold-until": "2107-10-28T20:39:37.882188+00:00",
+                        "hold-until-schedule-event": false,
+                        "hold-reason": "Set by Daniel",
+                        "current-temperature-c": 22.76,
+                        "occupancy-mode": "Flair Auto",
+                        "windows": null,
+                        "updated-at": "2021-03-08T00:09:22.886981+00:00",
+                        "frozen-pipe-pet-protect": true
+                    },
+                    "relationships": {
+                        "puck-apps": {
+                            "links": {
+                                "self": "/api/rooms/20374/relationships/puck-apps",
+                                "related": "/api/rooms/20374/puck-apps"
+                            }
+                        },
+                        "occupancy-conclusions": {
+                            "links": {
+                                "related": "/api/rooms/20374/occupancy-conclusions"
+                            }
+                        },
+                        "zones": {
+                            "links": {
+                                "self": "/api/rooms/20374/relationships/zones",
+                                "related": "/api/rooms/20374/zones"
+                            },
+                            "data": [
+                                {
+                                    "type": "zones",
+                                    "id": "56142"
+                                }
+                            ]
+                        },
+                        "hvac-units": {
+                            "links": {
+                                "self": "/api/rooms/20374/relationships/hvac-units",
+                                "related": "/api/rooms/20374/hvac-units"
+                            },
+                            "data": []
+                        },
+                        "structure": {
+                            "links": {
+                                "self": "/api/rooms/20374/relationships/structure",
+                                "related": "/api/rooms/20374/structure"
+                            },
+                            "data": {
+                                "type": "structures",
+                                "id": "14573"
+                            }
+                        },
+                        "room-auto-conclusions": {
+                            "links": {
+                                "related": "/api/rooms/20374/room-auto-conclusions"
+                            }
+                        },
+                        "pucks": {
+                            "links": {
+                                "self": "/api/rooms/20374/relationships/pucks",
+                                "related": "/api/rooms/20374/pucks"
+                            },
+                            "data": [
+                                {
+                                    "type": "pucks",
+                                    "id": "0e6d5a6e-d480-53ae-0599-807446b2af28"
+                                }
+                            ]
+                        },
+                        "room-states": {
+                            "links": {
+                                "related": "/api/rooms/20374/room-states"
+                            }
+                        },
+                        "bridges": {
+                            "links": {
+                                "self": "/api/rooms/20374/relationships/bridges",
+                                "related": "/api/rooms/20374/bridges"
+                            },
+                            "data": []
+                        },
+                        "thermostat": {
+                            "links": {
+                                "self": "/api/rooms/20374/relationships/thermostat",
+                                "related": "/api/rooms/20374/thermostat"
+                            },
+                            "data": {
+                                "type": "thermostats",
+                                "id": null
+                            }
+                        },
+                        "current-conclusions": {
+                            "links": {
+                                "related": "/api/rooms/20374/current-conclusions"
+                            }
+                        },
+                        "vents": {
+                            "links": {
+                                "self": "/api/rooms/20374/relationships/vents",
+                                "related": "/api/rooms/20374/vents"
+                            },
+                            "data": []
+                        },
+                        "remote-sensors": {
+                            "links": {
+                                "self": "/api/rooms/20374/relationships/remote-sensors",
+                                "related": "/api/rooms/20374/remote-sensors"
+                            },
+                            "data": []
+                        },
+                        "occupants": {
+                            "links": {
+                                "self": "/api/rooms/20374/relationships/occupants",
+                                "related": "/api/rooms/20374/occupants"
+                            }
+                        }
+                    },
+                    "id": "20374"
+                }
+            ]
+        },
+        "rawHeaders": [
+            "Date",
+            "Mon, 08 Mar 2021 00:14:16 GMT",
+            "Content-Type",
+            "application/json; charset=utf-8",
+            "Transfer-Encoding",
+            "chunked",
+            "Connection",
+            "close",
+            "Server",
+            "gunicorn/20.0.4",
+            "Access-Control-Allow-Origin",
+            "*",
+            "Access-Control-Max-Age",
+            "21600",
+            "Access-Control-Allow-Headers",
+            "authorization, content-type, accept, x-admin-mode, user-agent",
+            "Access-Control-Allow-Credentials",
+            "true"
+        ],
+        "responseIsBinary": false
+    },
+    {
+        "scope": "https://api.flair.co:443",
+        "method": "PATCH",
+        "path": "/api/rooms/20389",
+        "body": {
+            "data": {
+                "type": "rooms",
+                "attributes": {
+                    "set-point-c": 24
+                },
+                "relationships": {}
+            }
+        },
+        "status": 200,
+        "response": {
+            "meta": {
+                "self": "/api/rooms/20389"
+            },
+            "data": {
+                "type": "rooms",
+                "attributes": {
+                    "level": null,
+                    "room-type": null,
+                    "created-at": "2020-04-30T23:16:55.170679+00:00",
+                    "preheat-precool": true,
+                    "active": true,
+                    "humidity-away-min": 10,
+                    "temp-away-min-c": 16,
+                    "temp-away-max-c": 22.5,
+                    "name": "Upstairs Bathroom",
+                    "humidity-away-max": 80,
+                    "air-return": false,
+                    "set-point-c": 24,
+                    "current-humidity": null,
+                    "set-point-manual": true,
+                    "pucks-inactive": "NotSetup",
+                    "state-updated-at": "2021-03-08T00:14:17.328600+00:00",
+                    "room-away-mode": "Smart Away",
+                    "hold-until": "2107-12-11T00:14:17.299719+00:00",
+                    "hold-until-schedule-event": false,
+                    "hold-reason": "Set by Daniel",
+                    "current-temperature-c": null,
+                    "occupancy-mode": "Flair Auto",
+                    "windows": null,
+                    "updated-at": "2021-03-08T00:14:17.893552+00:00",
+                    "frozen-pipe-pet-protect": true
+                },
+                "relationships": {
+                    "puck-apps": {
+                        "links": {
+                            "self": "/api/rooms/20389/relationships/puck-apps",
+                            "related": "/api/rooms/20389/puck-apps"
+                        }
+                    },
+                    "occupancy-conclusions": {
+                        "links": {
+                            "related": "/api/rooms/20389/occupancy-conclusions"
+                        }
+                    },
+                    "zones": {
+                        "links": {
+                            "self": "/api/rooms/20389/relationships/zones",
+                            "related": "/api/rooms/20389/zones"
+                        },
+                        "data": [
+                            {
+                                "type": "zones",
+                                "id": "56142"
+                            }
+                        ]
+                    },
+                    "hvac-units": {
+                        "links": {
+                            "self": "/api/rooms/20389/relationships/hvac-units",
+                            "related": "/api/rooms/20389/hvac-units"
+                        },
+                        "data": []
+                    },
+                    "structure": {
+                        "links": {
+                            "self": "/api/rooms/20389/relationships/structure",
+                            "related": "/api/rooms/20389/structure"
+                        },
+                        "data": {
+                            "type": "structures",
+                            "id": "14573"
+                        }
+                    },
+                    "room-auto-conclusions": {
+                        "links": {
+                            "related": "/api/rooms/20389/room-auto-conclusions"
+                        }
+                    },
+                    "pucks": {
+                        "links": {
+                            "self": "/api/rooms/20389/relationships/pucks",
+                            "related": "/api/rooms/20389/pucks"
+                        },
+                        "data": []
+                    },
+                    "room-states": {
+                        "links": {
+                            "related": "/api/rooms/20389/room-states"
+                        }
+                    },
+                    "bridges": {
+                        "links": {
+                            "self": "/api/rooms/20389/relationships/bridges",
+                            "related": "/api/rooms/20389/bridges"
+                        },
+                        "data": []
+                    },
+                    "thermostat": {
+                        "links": {
+                            "self": "/api/rooms/20389/relationships/thermostat",
+                            "related": "/api/rooms/20389/thermostat"
+                        },
+                        "data": {
+                            "type": "thermostats",
+                            "id": null
+                        }
+                    },
+                    "current-conclusions": {
+                        "links": {
+                            "related": "/api/rooms/20389/current-conclusions"
+                        }
+                    },
+                    "vents": {
+                        "links": {
+                            "self": "/api/rooms/20389/relationships/vents",
+                            "related": "/api/rooms/20389/vents"
+                        },
+                        "data": [
+                            {
+                                "type": "vents",
+                                "id": "a9059032-84a4-5b42-3c1e-128b49fa702d"
+                            }
+                        ]
+                    },
+                    "remote-sensors": {
+                        "links": {
+                            "self": "/api/rooms/20389/relationships/remote-sensors",
+                            "related": "/api/rooms/20389/remote-sensors"
+                        },
+                        "data": []
+                    },
+                    "occupants": {
+                        "links": {
+                            "self": "/api/rooms/20389/relationships/occupants",
+                            "related": "/api/rooms/20389/occupants"
+                        }
+                    }
+                },
+                "id": "20389"
+            }
+        },
+        "rawHeaders": [
+            "Date",
+            "Mon, 08 Mar 2021 00:14:18 GMT",
+            "Content-Type",
+            "application/json; charset=utf-8",
+            "Transfer-Encoding",
+            "chunked",
+            "Connection",
+            "close",
+            "Server",
+            "gunicorn/20.0.4",
+            "Access-Control-Allow-Origin",
+            "*",
+            "Access-Control-Max-Age",
+            "21600",
+            "Access-Control-Allow-Headers",
+            "authorization, content-type, accept, x-admin-mode, user-agent",
+            "Access-Control-Allow-Credentials",
+            "true"
+        ],
+        "responseIsBinary": false
+    }
+]

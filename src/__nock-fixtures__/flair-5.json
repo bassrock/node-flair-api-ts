@@ -1,0 +1,745 @@
+[
+    {
+        "scope": "https://api.flair.co:443",
+        "method": "POST",
+        "path": "/oauth/token?client_id=test_client_id&client_secret=test_client_secret&grant_type=password&password=test_password&scope=structures.edit%20structures.view%20pucks.view%20pucks.edit%20vents.view%20vents.edit%20users.view&username=test_username",
+        "body": "",
+        "status": 200,
+        "response": {
+            "access_token": "test_access_token",
+            "expires_in": 3600,
+            "token_type": "Bearer",
+            "scope": "structures.edit structures.view pucks.view pucks.edit vents.view vents.edit users.view",
+            "refresh_token": "test_refresh_token"
+        },
+        "rawHeaders": [
+            "Date",
+            "Mon, 08 Mar 2021 00:14:12 GMT",
+            "Content-Type",
+            "application/json",
+            "Content-Length",
+            "244",
+            "Connection",
+            "close",
+            "Server",
+            "gunicorn/20.0.4",
+            "Cache-Control",
+            "no-store",
+            "Pragma",
+            "no-cache",
+            "Access-Control-Allow-Origin",
+            "*"
+        ],
+        "responseIsBinary": false
+    },
+    {
+        "scope": "https://api.flair.co:443",
+        "method": "GET",
+        "path": "/api/vents",
+        "body": "",
+        "status": 200,
+        "response": {
+            "meta": {
+                "self": "/api/vents",
+                "first": "/api/vents?include=&page%5Bsize%5D=50&page%5Bpage%5D=1",
+                "last": "/api/vents?include=&page%5Bsize%5D=50&page%5Bpage%5D=1",
+                "next": null,
+                "prev": null
+            },
+            "data": [
+                {
+                    "type": "vents",
+                    "relationships": {
+                        "room": {
+                            "links": {
+                                "self": "/api/vents/a9059032-84a4-5b42-3c1e-128b49fa702d/relationships/room",
+                                "related": "/api/vents/a9059032-84a4-5b42-3c1e-128b49fa702d/room"
+                            },
+                            "data": {
+                                "type": "rooms",
+                                "id": "20389"
+                            }
+                        },
+                        "current-state": {
+                            "links": {
+                                "related": "/api/vents/a9059032-84a4-5b42-3c1e-128b49fa702d/current-state"
+                            }
+                        },
+                        "vent-states": {
+                            "links": {
+                                "related": "/api/vents/a9059032-84a4-5b42-3c1e-128b49fa702d/vent-states"
+                            }
+                        },
+                        "closest-puck": {
+                            "links": {
+                                "related": "/api/vents/a9059032-84a4-5b42-3c1e-128b49fa702d/closest-pucks"
+                            }
+                        },
+                        "structure": {
+                            "links": {
+                                "self": "/api/vents/a9059032-84a4-5b42-3c1e-128b49fa702d/relationships/structure",
+                                "related": "/api/vents/a9059032-84a4-5b42-3c1e-128b49fa702d/structure"
+                            },
+                            "data": {
+                                "type": "structures",
+                                "id": "14573"
+                            }
+                        },
+                        "current-reading": {
+                            "links": {
+                                "related": "/api/vents/a9059032-84a4-5b42-3c1e-128b49fa702d/current-reading"
+                            }
+                        },
+                        "sensor-readings": {
+                            "links": {
+                                "related": "/api/vents/a9059032-84a4-5b42-3c1e-128b49fa702d/sensor-readings"
+                            }
+                        }
+                    },
+                    "attributes": {
+                        "has-buzzed": false,
+                        "updated-at": "2021-03-08T00:12:28.307239+00:00",
+                        "percent-open": 0,
+                        "current-rssi": -72,
+                        "created-at": "2020-04-30T22:42:24.548241+00:00",
+                        "inactive": false,
+                        "setup-lightstrip": 10,
+                        "percent-open-reason": "Manual by User",
+                        "name": "Upstairs Bathroom-a905",
+                        "voltage": 3.1
+                    },
+                    "id": "a9059032-84a4-5b42-3c1e-128b49fa702d"
+                },
+                {
+                    "type": "vents",
+                    "relationships": {
+                        "room": {
+                            "links": {
+                                "self": "/api/vents/b085d6ec-d252-584b-b4cb-3c5383f0d95d/relationships/room",
+                                "related": "/api/vents/b085d6ec-d252-584b-b4cb-3c5383f0d95d/room"
+                            },
+                            "data": {
+                                "type": "rooms",
+                                "id": "20380"
+                            }
+                        },
+                        "current-state": {
+                            "links": {
+                                "related": "/api/vents/b085d6ec-d252-584b-b4cb-3c5383f0d95d/current-state"
+                            }
+                        },
+                        "vent-states": {
+                            "links": {
+                                "related": "/api/vents/b085d6ec-d252-584b-b4cb-3c5383f0d95d/vent-states"
+                            }
+                        },
+                        "closest-puck": {
+                            "links": {
+                                "related": "/api/vents/b085d6ec-d252-584b-b4cb-3c5383f0d95d/closest-pucks"
+                            }
+                        },
+                        "structure": {
+                            "links": {
+                                "self": "/api/vents/b085d6ec-d252-584b-b4cb-3c5383f0d95d/relationships/structure",
+                                "related": "/api/vents/b085d6ec-d252-584b-b4cb-3c5383f0d95d/structure"
+                            },
+                            "data": {
+                                "type": "structures",
+                                "id": "14573"
+                            }
+                        },
+                        "current-reading": {
+                            "links": {
+                                "related": "/api/vents/b085d6ec-d252-584b-b4cb-3c5383f0d95d/current-reading"
+                            }
+                        },
+                        "sensor-readings": {
+                            "links": {
+                                "related": "/api/vents/b085d6ec-d252-584b-b4cb-3c5383f0d95d/sensor-readings"
+                            }
+                        }
+                    },
+                    "attributes": {
+                        "has-buzzed": false,
+                        "updated-at": "2021-03-08T00:12:24.877657+00:00",
+                        "percent-open": 0,
+                        "current-rssi": -78,
+                        "created-at": "2020-04-30T22:41:59.974698+00:00",
+                        "inactive": false,
+                        "setup-lightstrip": 9,
+                        "percent-open-reason": "This room does not require heating. Vent will open when the room is below 64.0F.",
+                        "name": "Guest Room-b085",
+                        "voltage": 3.09
+                    },
+                    "id": "b085d6ec-d252-584b-b4cb-3c5383f0d95d"
+                },
+                {
+                    "type": "vents",
+                    "relationships": {
+                        "room": {
+                            "links": {
+                                "self": "/api/vents/7d535779-f868-5d4c-1fb5-2fef4762688e/relationships/room",
+                                "related": "/api/vents/7d535779-f868-5d4c-1fb5-2fef4762688e/room"
+                            },
+                            "data": {
+                                "type": "rooms",
+                                "id": "20381"
+                            }
+                        },
+                        "current-state": {
+                            "links": {
+                                "related": "/api/vents/7d535779-f868-5d4c-1fb5-2fef4762688e/current-state"
+                            }
+                        },
+                        "vent-states": {
+                            "links": {
+                                "related": "/api/vents/7d535779-f868-5d4c-1fb5-2fef4762688e/vent-states"
+                            }
+                        },
+                        "closest-puck": {
+                            "links": {
+                                "related": "/api/vents/7d535779-f868-5d4c-1fb5-2fef4762688e/closest-pucks"
+                            }
+                        },
+                        "structure": {
+                            "links": {
+                                "self": "/api/vents/7d535779-f868-5d4c-1fb5-2fef4762688e/relationships/structure",
+                                "related": "/api/vents/7d535779-f868-5d4c-1fb5-2fef4762688e/structure"
+                            },
+                            "data": {
+                                "type": "structures",
+                                "id": "14573"
+                            }
+                        },
+                        "current-reading": {
+                            "links": {
+                                "related": "/api/vents/7d535779-f868-5d4c-1fb5-2fef4762688e/current-reading"
+                            }
+                        },
+                        "sensor-readings": {
+                            "links": {
+                                "related": "/api/vents/7d535779-f868-5d4c-1fb5-2fef4762688e/sensor-readings"
+                            }
+                        }
+                    },
+                    "attributes": {
+                        "has-buzzed": false,
+                        "updated-at": "2021-03-08T00:09:20.642442+00:00",
+                        "percent-open": 0,
+                        "current-rssi": -65,
+                        "created-at": "2020-04-30T22:06:57.383713+00:00",
+                        "inactive": false,
+                        "setup-lightstrip": 7,
+                        "percent-open-reason": "This room does not require heating. Vent will open when the room is below 68.0F.",
+                        "name": "Bathroom",
+                        "voltage": 3.08
+                    },
+                    "id": "7d535779-f868-5d4c-1fb5-2fef4762688e"
+                },
+                {
+                    "type": "vents",
+                    "relationships": {
+                        "room": {
+                            "links": {
+                                "self": "/api/vents/0858ef5b-676c-534b-5cbd-3773d5942947/relationships/room",
+                                "related": "/api/vents/0858ef5b-676c-534b-5cbd-3773d5942947/room"
+                            },
+                            "data": {
+                                "type": "rooms",
+                                "id": "20381"
+                            }
+                        },
+                        "current-state": {
+                            "links": {
+                                "related": "/api/vents/0858ef5b-676c-534b-5cbd-3773d5942947/current-state"
+                            }
+                        },
+                        "vent-states": {
+                            "links": {
+                                "related": "/api/vents/0858ef5b-676c-534b-5cbd-3773d5942947/vent-states"
+                            }
+                        },
+                        "closest-puck": {
+                            "links": {
+                                "related": "/api/vents/0858ef5b-676c-534b-5cbd-3773d5942947/closest-pucks"
+                            }
+                        },
+                        "structure": {
+                            "links": {
+                                "self": "/api/vents/0858ef5b-676c-534b-5cbd-3773d5942947/relationships/structure",
+                                "related": "/api/vents/0858ef5b-676c-534b-5cbd-3773d5942947/structure"
+                            },
+                            "data": {
+                                "type": "structures",
+                                "id": "14573"
+                            }
+                        },
+                        "current-reading": {
+                            "links": {
+                                "related": "/api/vents/0858ef5b-676c-534b-5cbd-3773d5942947/current-reading"
+                            }
+                        },
+                        "sensor-readings": {
+                            "links": {
+                                "related": "/api/vents/0858ef5b-676c-534b-5cbd-3773d5942947/sensor-readings"
+                            }
+                        }
+                    },
+                    "attributes": {
+                        "has-buzzed": false,
+                        "updated-at": "2021-03-08T00:14:10.714874+00:00",
+                        "percent-open": 0,
+                        "current-rssi": -49,
+                        "created-at": "2020-04-30T22:02:49.136981+00:00",
+                        "inactive": false,
+                        "setup-lightstrip": 6,
+                        "percent-open-reason": "This room does not require heating. Vent will open when the room is below 68.0F.",
+                        "name": "Master Bedroom-0858",
+                        "voltage": 3.08
+                    },
+                    "id": "0858ef5b-676c-534b-5cbd-3773d5942947"
+                },
+                {
+                    "type": "vents",
+                    "relationships": {
+                        "room": {
+                            "links": {
+                                "self": "/api/vents/642595ff-4ea1-5a1a-d846-ff4434e3d822/relationships/room",
+                                "related": "/api/vents/642595ff-4ea1-5a1a-d846-ff4434e3d822/room"
+                            },
+                            "data": {
+                                "type": "rooms",
+                                "id": "20383"
+                            }
+                        },
+                        "current-state": {
+                            "links": {
+                                "related": "/api/vents/642595ff-4ea1-5a1a-d846-ff4434e3d822/current-state"
+                            }
+                        },
+                        "vent-states": {
+                            "links": {
+                                "related": "/api/vents/642595ff-4ea1-5a1a-d846-ff4434e3d822/vent-states"
+                            }
+                        },
+                        "closest-puck": {
+                            "links": {
+                                "related": "/api/vents/642595ff-4ea1-5a1a-d846-ff4434e3d822/closest-pucks"
+                            }
+                        },
+                        "structure": {
+                            "links": {
+                                "self": "/api/vents/642595ff-4ea1-5a1a-d846-ff4434e3d822/relationships/structure",
+                                "related": "/api/vents/642595ff-4ea1-5a1a-d846-ff4434e3d822/structure"
+                            },
+                            "data": {
+                                "type": "structures",
+                                "id": "14573"
+                            }
+                        },
+                        "current-reading": {
+                            "links": {
+                                "related": "/api/vents/642595ff-4ea1-5a1a-d846-ff4434e3d822/current-reading"
+                            }
+                        },
+                        "sensor-readings": {
+                            "links": {
+                                "related": "/api/vents/642595ff-4ea1-5a1a-d846-ff4434e3d822/sensor-readings"
+                            }
+                        }
+                    },
+                    "attributes": {
+                        "has-buzzed": false,
+                        "updated-at": "2021-03-08T00:08:41.033557+00:00",
+                        "percent-open": 100,
+                        "current-rssi": -74,
+                        "created-at": "2020-04-30T21:59:56.272126+00:00",
+                        "inactive": false,
+                        "setup-lightstrip": 5,
+                        "percent-open-reason": "This room is heating. Vent will close when the room is above 75.0F.",
+                        "name": "Foyer-6425",
+                        "voltage": 3.08
+                    },
+                    "id": "642595ff-4ea1-5a1a-d846-ff4434e3d822"
+                },
+                {
+                    "type": "vents",
+                    "relationships": {
+                        "room": {
+                            "links": {
+                                "self": "/api/vents/b765eddd-ce50-50bd-c6d4-d3857096ca0d/relationships/room",
+                                "related": "/api/vents/b765eddd-ce50-50bd-c6d4-d3857096ca0d/room"
+                            },
+                            "data": {
+                                "type": "rooms",
+                                "id": "20383"
+                            }
+                        },
+                        "current-state": {
+                            "links": {
+                                "related": "/api/vents/b765eddd-ce50-50bd-c6d4-d3857096ca0d/current-state"
+                            }
+                        },
+                        "vent-states": {
+                            "links": {
+                                "related": "/api/vents/b765eddd-ce50-50bd-c6d4-d3857096ca0d/vent-states"
+                            }
+                        },
+                        "closest-puck": {
+                            "links": {
+                                "related": "/api/vents/b765eddd-ce50-50bd-c6d4-d3857096ca0d/closest-pucks"
+                            }
+                        },
+                        "structure": {
+                            "links": {
+                                "self": "/api/vents/b765eddd-ce50-50bd-c6d4-d3857096ca0d/relationships/structure",
+                                "related": "/api/vents/b765eddd-ce50-50bd-c6d4-d3857096ca0d/structure"
+                            },
+                            "data": {
+                                "type": "structures",
+                                "id": "14573"
+                            }
+                        },
+                        "current-reading": {
+                            "links": {
+                                "related": "/api/vents/b765eddd-ce50-50bd-c6d4-d3857096ca0d/current-reading"
+                            }
+                        },
+                        "sensor-readings": {
+                            "links": {
+                                "related": "/api/vents/b765eddd-ce50-50bd-c6d4-d3857096ca0d/sensor-readings"
+                            }
+                        }
+                    },
+                    "attributes": {
+                        "has-buzzed": false,
+                        "updated-at": "2021-03-08T00:12:06.786345+00:00",
+                        "percent-open": 100,
+                        "current-rssi": -64,
+                        "created-at": "2020-04-30T21:55:23.702592+00:00",
+                        "inactive": false,
+                        "setup-lightstrip": 4,
+                        "percent-open-reason": "This room is heating. Vent will close when the room is above 75.0F.",
+                        "name": "Foyer-b765",
+                        "voltage": 3.09
+                    },
+                    "id": "b765eddd-ce50-50bd-c6d4-d3857096ca0d"
+                },
+                {
+                    "type": "vents",
+                    "relationships": {
+                        "room": {
+                            "links": {
+                                "self": "/api/vents/af2247a1-db29-5fb2-684a-028f998e1232/relationships/room",
+                                "related": "/api/vents/af2247a1-db29-5fb2-684a-028f998e1232/room"
+                            },
+                            "data": {
+                                "type": "rooms",
+                                "id": "20384"
+                            }
+                        },
+                        "current-state": {
+                            "links": {
+                                "related": "/api/vents/af2247a1-db29-5fb2-684a-028f998e1232/current-state"
+                            }
+                        },
+                        "vent-states": {
+                            "links": {
+                                "related": "/api/vents/af2247a1-db29-5fb2-684a-028f998e1232/vent-states"
+                            }
+                        },
+                        "closest-puck": {
+                            "links": {
+                                "related": "/api/vents/af2247a1-db29-5fb2-684a-028f998e1232/closest-pucks"
+                            }
+                        },
+                        "structure": {
+                            "links": {
+                                "self": "/api/vents/af2247a1-db29-5fb2-684a-028f998e1232/relationships/structure",
+                                "related": "/api/vents/af2247a1-db29-5fb2-684a-028f998e1232/structure"
+                            },
+                            "data": {
+                                "type": "structures",
+                                "id": "14573"
+                            }
+                        },
+                        "current-reading": {
+                            "links": {
+                                "related": "/api/vents/af2247a1-db29-5fb2-684a-028f998e1232/current-reading"
+                            }
+                        },
+                        "sensor-readings": {
+                            "links": {
+                                "related": "/api/vents/af2247a1-db29-5fb2-684a-028f998e1232/sensor-readings"
+                            }
+                        }
+                    },
+                    "attributes": {
+                        "has-buzzed": false,
+                        "updated-at": "2021-03-08T00:13:39.498474+00:00",
+                        "percent-open": 100,
+                        "current-rssi": -77,
+                        "created-at": "2020-04-30T21:50:27.245523+00:00",
+                        "inactive": false,
+                        "setup-lightstrip": 3,
+                        "percent-open-reason": "This room is heating. Vent will close when the room is above 75.0F.",
+                        "name": "Living Room-Door",
+                        "voltage": 3.08
+                    },
+                    "id": "af2247a1-db29-5fb2-684a-028f998e1232"
+                },
+                {
+                    "type": "vents",
+                    "relationships": {
+                        "room": {
+                            "links": {
+                                "self": "/api/vents/cafd4ca0-be68-550c-4d48-cecc07741d8d/relationships/room",
+                                "related": "/api/vents/cafd4ca0-be68-550c-4d48-cecc07741d8d/room"
+                            },
+                            "data": {
+                                "type": "rooms",
+                                "id": "20384"
+                            }
+                        },
+                        "current-state": {
+                            "links": {
+                                "related": "/api/vents/cafd4ca0-be68-550c-4d48-cecc07741d8d/current-state"
+                            }
+                        },
+                        "vent-states": {
+                            "links": {
+                                "related": "/api/vents/cafd4ca0-be68-550c-4d48-cecc07741d8d/vent-states"
+                            }
+                        },
+                        "closest-puck": {
+                            "links": {
+                                "related": "/api/vents/cafd4ca0-be68-550c-4d48-cecc07741d8d/closest-pucks"
+                            }
+                        },
+                        "structure": {
+                            "links": {
+                                "self": "/api/vents/cafd4ca0-be68-550c-4d48-cecc07741d8d/relationships/structure",
+                                "related": "/api/vents/cafd4ca0-be68-550c-4d48-cecc07741d8d/structure"
+                            },
+                            "data": {
+                                "type": "structures",
+                                "id": "14573"
+                            }
+                        },
+                        "current-reading": {
+                            "links": {
+                                "related": "/api/vents/cafd4ca0-be68-550c-4d48-cecc07741d8d/current-reading"
+                            }
+                        },
+                        "sensor-readings": {
+                            "links": {
+                                "related": "/api/vents/cafd4ca0-be68-550c-4d48-cecc07741d8d/sensor-readings"
+                            }
+                        }
+                    },
+                    "attributes": {
+                        "has-buzzed": false,
+                        "updated-at": "2021-03-08T00:10:25.485126+00:00",
+                        "percent-open": 100,
+                        "current-rssi": -66,
+                        "created-at": "2020-04-30T21:46:44.682551+00:00",
+                        "inactive": false,
+                        "setup-lightstrip": 2,
+                        "percent-open-reason": "This room is heating. Vent will close when the room is above 75.0F.",
+                        "name": "Living Room-TV",
+                        "voltage": 3.07
+                    },
+                    "id": "cafd4ca0-be68-550c-4d48-cecc07741d8d"
+                },
+                {
+                    "type": "vents",
+                    "relationships": {
+                        "room": {
+                            "links": {
+                                "self": "/api/vents/bcde6acc-aaf0-5bce-6e50-52231f752806/relationships/room",
+                                "related": "/api/vents/bcde6acc-aaf0-5bce-6e50-52231f752806/room"
+                            },
+                            "data": {
+                                "type": "rooms",
+                                "id": "20384"
+                            }
+                        },
+                        "current-state": {
+                            "links": {
+                                "related": "/api/vents/bcde6acc-aaf0-5bce-6e50-52231f752806/current-state"
+                            }
+                        },
+                        "vent-states": {
+                            "links": {
+                                "related": "/api/vents/bcde6acc-aaf0-5bce-6e50-52231f752806/vent-states"
+                            }
+                        },
+                        "closest-puck": {
+                            "links": {
+                                "related": "/api/vents/bcde6acc-aaf0-5bce-6e50-52231f752806/closest-pucks"
+                            }
+                        },
+                        "structure": {
+                            "links": {
+                                "self": "/api/vents/bcde6acc-aaf0-5bce-6e50-52231f752806/relationships/structure",
+                                "related": "/api/vents/bcde6acc-aaf0-5bce-6e50-52231f752806/structure"
+                            },
+                            "data": {
+                                "type": "structures",
+                                "id": "14573"
+                            }
+                        },
+                        "current-reading": {
+                            "links": {
+                                "related": "/api/vents/bcde6acc-aaf0-5bce-6e50-52231f752806/current-reading"
+                            }
+                        },
+                        "sensor-readings": {
+                            "links": {
+                                "related": "/api/vents/bcde6acc-aaf0-5bce-6e50-52231f752806/sensor-readings"
+                            }
+                        }
+                    },
+                    "attributes": {
+                        "has-buzzed": false,
+                        "updated-at": "2021-03-08T00:13:12.465267+00:00",
+                        "percent-open": 100,
+                        "current-rssi": -72,
+                        "created-at": "2020-04-30T21:16:38.666904+00:00",
+                        "inactive": false,
+                        "setup-lightstrip": 1,
+                        "percent-open-reason": "This room is heating. Vent will close when the room is above 75.0F.",
+                        "name": "Living Room Bathroom",
+                        "voltage": 2.96
+                    },
+                    "id": "bcde6acc-aaf0-5bce-6e50-52231f752806"
+                }
+            ]
+        },
+        "rawHeaders": [
+            "Date",
+            "Mon, 08 Mar 2021 00:14:13 GMT",
+            "Content-Type",
+            "application/json; charset=utf-8",
+            "Transfer-Encoding",
+            "chunked",
+            "Connection",
+            "close",
+            "Server",
+            "gunicorn/20.0.4",
+            "Access-Control-Allow-Origin",
+            "*",
+            "Access-Control-Max-Age",
+            "21600",
+            "Access-Control-Allow-Headers",
+            "authorization, content-type, accept, x-admin-mode, user-agent",
+            "Access-Control-Allow-Credentials",
+            "true"
+        ],
+        "responseIsBinary": false
+    },
+    {
+        "scope": "https://api.flair.co:443",
+        "method": "PATCH",
+        "path": "/api/vents/a9059032-84a4-5b42-3c1e-128b49fa702d",
+        "body": {
+            "data": {
+                "type": "vents",
+                "attributes": {
+                    "percent-open": 0
+                },
+                "relationships": {}
+            }
+        },
+        "status": 200,
+        "response": {
+            "meta": {
+                "self": "/api/vents/a9059032-84a4-5b42-3c1e-128b49fa702d"
+            },
+            "data": {
+                "type": "vents",
+                "attributes": {
+                    "current-rssi": -72,
+                    "has-buzzed": false,
+                    "percent-open-reason": "Manual by User",
+                    "inactive": false,
+                    "created-at": "2020-04-30T22:42:24.548241+00:00",
+                    "updated-at": "2021-03-08T00:14:13.723674+00:00",
+                    "name": "Upstairs Bathroom-a905",
+                    "voltage": 3.1,
+                    "percent-open": 0,
+                    "setup-lightstrip": 10
+                },
+                "relationships": {
+                    "vent-states": {
+                        "links": {
+                            "related": "/api/vents/a9059032-84a4-5b42-3c1e-128b49fa702d/vent-states"
+                        }
+                    },
+                    "sensor-readings": {
+                        "links": {
+                            "related": "/api/vents/a9059032-84a4-5b42-3c1e-128b49fa702d/sensor-readings"
+                        }
+                    },
+                    "structure": {
+                        "links": {
+                            "self": "/api/vents/a9059032-84a4-5b42-3c1e-128b49fa702d/relationships/structure",
+                            "related": "/api/vents/a9059032-84a4-5b42-3c1e-128b49fa702d/structure"
+                        },
+                        "data": {
+                            "type": "structures",
+                            "id": "14573"
+                        }
+                    },
+                    "current-state": {
+                        "links": {
+                            "related": "/api/vents/a9059032-84a4-5b42-3c1e-128b49fa702d/current-state"
+                        }
+                    },
+                    "current-reading": {
+                        "links": {
+                            "related": "/api/vents/a9059032-84a4-5b42-3c1e-128b49fa702d/current-reading"
+                        }
+                    },
+                    "closest-puck": {
+                        "links": {
+                            "related": "/api/vents/a9059032-84a4-5b42-3c1e-128b49fa702d/closest-pucks"
+                        }
+                    },
+                    "room": {
+                        "links": {
+                            "self": "/api/vents/a9059032-84a4-5b42-3c1e-128b49fa702d/relationships/room",
+                            "related": "/api/vents/a9059032-84a4-5b42-3c1e-128b49fa702d/room"
+                        },
+                        "data": {
+                            "type": "rooms",
+                            "id": "20389"
+                        }
+                    }
+                },
+                "id": "a9059032-84a4-5b42-3c1e-128b49fa702d"
+            }
+        },
+        "rawHeaders": [
+            "Date",
+            "Mon, 08 Mar 2021 00:14:13 GMT",
+            "Content-Type",
+            "application/json; charset=utf-8",
+            "Transfer-Encoding",
+            "chunked",
+            "Connection",
+            "close",
+            "Server",
+            "gunicorn/20.0.4",
+            "Access-Control-Allow-Origin",
+            "*",
+            "Access-Control-Max-Age",
+            "21600",
+            "Access-Control-Allow-Headers",
+            "authorization, content-type, accept, x-admin-mode, user-agent",
+            "Access-Control-Allow-Credentials",
+            "true"
+        ],
+        "responseIsBinary": false
+    }
+]
