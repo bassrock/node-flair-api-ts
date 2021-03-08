@@ -1,5 +1,10 @@
 # node-flair-api
+
 A node implementation of the Flair Smart Vent API
+
+# Docs
+
+Docs are locatated at [https://bassrock.github.io/node-flair-api-ts/index.html](https://bassrock.github.io/node-flair-api-ts/index.html)
 
 ### Commit format
 
