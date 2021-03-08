@@ -11,6 +11,7 @@ module.exports = {
   },
   ignorePatterns: [
     'dist',
+    'src/__nock-fixtures__/**'
   ],
   rules: {
     'quotes': ['warn', 'single'],

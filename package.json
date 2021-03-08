@@ -10,12 +10,11 @@
   },
   "scripts": {
     "test:ci": "npm test",
-    "test:record": "NOCK_BACK_MODE=record npm test",
     "test:watch": "npm test -- --watchAll",
     "test": "jest",
     "build": "rm -rf dist && tsc",
     "lint": "eslint src/**.ts --max-warnings=0",
-    "lint:fix": "eslint --fix src/**"
+    "lint:fix": "eslint --fix src/**.ts"
   },
   "repository": {
     "type": "git",

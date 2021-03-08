@@ -1,6 +1,6 @@
 import { Client } from './client';
 
-import { setupRecorder } from "nock-record";
+import { setupRecorder } from 'nock-record';
 import { expect } from 'chai';
 
 const record = setupRecorder();
@@ -24,13 +24,13 @@ describe('Client', () => {
     scopeCompleteRecording();
     scopeAssertScopesFinished();
     counter++;
-  })
+  });
 
 
   describe('0 #getUsers()',() => {
     it('should get users', async () => {
       const result = await client.getUsers();
-      expect(result[0].email).to.eql('test_email')
+      expect(result[0].email).to.eql('test_email');
     });
   });
 
@@ -38,14 +38,14 @@ describe('Client', () => {
   describe('1 #getPucks()', () => {
     it('should get pucks', async () => {
       const result = await client.getPucks();
-      expect(result.length).to.eql(6)
+      expect(result.length).to.eql(6);
     });
   });
 
   describe('2 #getVents()', () => {
     it('should get vents', async () => {
       const result = await client.getVents();
-      expect(result.length).to.eql(9)
+      expect(result.length).to.eql(9);
     });
   });
 
@@ -53,7 +53,7 @@ describe('Client', () => {
     it('should get vents', async () => {
       const vents = await client.getVents();
       const result = await client.getVentReading(vents[0]);
-      expect(result.ductTemperatureC).to.eql(23.51)
+      expect(result.ductTemperatureC).to.eql(23.51);
     });
   });
 
@@ -62,7 +62,7 @@ describe('Client', () => {
     it('should get pucks', async () => {
       const pucks = await client.getPucks();
       const result = await client.getPuckReading(pucks[0]);
-      expect(result.currentHumidity).to.eql(34)
+      expect(result.currentHumidity).to.eql(34);
     });
   });
 
@@ -70,14 +70,14 @@ describe('Client', () => {
     it('should set vent percent', async () => {
       const vents = await client.getVents();
       const result = await client.setVentPercentOpen(vents[0], 0);
-      expect(result.percentOpen).to.eql(0)
+      expect(result.percentOpen).to.eql(0);
     });
   });
 
   describe('6 #getRooms()', () => {
     it('should get rooms', async () => {
       const result = await client.getRooms();
-      expect(result.length).to.eql(7)
+      expect(result.length).to.eql(7);
     });
   });
 
@@ -85,7 +85,7 @@ describe('Client', () => {
     it('should set room setpoint', async () => {
       const rooms = await client.getRooms();
       const result = await client.setRoomSetPoint(rooms[0], 24);
-      expect(result.setPointC).to.eql(24)
+      expect(result.setPointC).to.eql(24);
     });
   });
 });
