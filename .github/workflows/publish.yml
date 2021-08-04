@@ -18,4 +18,6 @@ jobs:
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v2
         env:
+          # secrets.GITHUB_TOKEN does not have necessary permissions
+          GH_TOKEN: ${{ secrets.SEMENTIC_AND_DEPBOT_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
