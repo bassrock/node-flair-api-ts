@@ -10,9 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-          persist-credentials: false
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
@@ -21,5 +18,5 @@ jobs:
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v2
         env:
-          GITHUB_TOKEN: ${{ secrets.SEMENTIC_AND_DEPBOT_TOKEN }}
+          GH_TOKEN: ${{ secrets.SEMENTIC_AND_DEPBOT_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
