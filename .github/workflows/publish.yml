@@ -18,5 +18,4 @@ jobs:
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v2
         env:
-          GH_TOKEN: ${{ secrets.SEMENTIC_AND_DEPBOT_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
