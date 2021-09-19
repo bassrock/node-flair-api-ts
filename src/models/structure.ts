@@ -1,6 +1,7 @@
 import {Model} from './model';
 
 export enum StructureHeatCoolMode {
+    OFF = 'float', //for some reason flair calls off float? Maybe its "floating..." around.
     COOL = 'cool',
     HEAT = 'heat',
     AUTO = 'auto'
