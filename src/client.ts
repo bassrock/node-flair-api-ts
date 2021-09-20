@@ -349,4 +349,25 @@ export class Client {
     });
     return structure.fromJSON(response.data.data);
   }
+
+  /**
+   *
+   * @param structure
+   * @param setPointC
+   * @returns
+   */
+  public async setStructureSetPoint(structure: Structure, setPointC: number): Promise<Structure> {
+    await this.updateClient();
+    const response = await this.client.patch(`/api/structures/${structure.id}`, {
+      data: {
+        type: 'structures',
+        attributes: {
+          'set-point-temperature-c': setPointC,
+        },
+        relationships: {},
+      },
+    });
+    structure.fromJSON(response.data.data);
+    return structure;
+  }
 }
