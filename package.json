@@ -54,7 +54,7 @@
     "chai": "^4.3.3",
     "eslint": "^7.16.0",
     "eslint-config-prettier": "^8.1.0",
-    "eslint-plugin-prettier": "^3.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "jest": "^27.0.4",
     "nock": "^13.0.9",
     "nock-record": "^0.3.9",
