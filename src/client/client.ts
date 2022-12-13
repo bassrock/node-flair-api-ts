@@ -2,6 +2,7 @@ import axios, {AxiosInstance} from "axios";
 import * as querystring from 'query-string';
 import moment, {Moment} from 'moment';
 import {FlairMode, Puck, Structure, StructureHeatCoolMode, User, Vent} from "./models";
+import {HVAC, HVACPowerMode, HVACSwingMode, HVACMode, HVACFanSpeed} from "./models/hvac"
 import {Room} from "./models/room";
 
 interface Token {
@@ -251,6 +252,94 @@ class Client {
             }
         })
         return structure.fromJSON(response.data.data)
+    }
+
+    public async getHVACs(structure: Structure): Promise<[HVAC]> {
+        await this.updateClient()
+        let response = await this.client.get(`/api/structures/${structure.id}/hvac-units`)
+        //TODO: Paginate
+        return response.data.data.map((data: any): HVAC => {
+            return (new HVAC()).fromJSON(data);
+        });
+    }
+
+
+    public async getHVAC(hvac: HVAC): Promise<HVAC> {
+        await this.updateClient()
+        let response = await this.client.get(`/api/hvac-units/${hvac.id}`)
+        //TODO: Paginate
+        return hvac.fromJSON(response.data.data);
+    }
+
+    public async setHVACPowerMode(hvac: HVAC, mode: HVACPowerMode): Promise<HVAC> {
+        await this.updateClient()
+        let response = await this.client.patch(`/api/hvac-units/${hvac.id}`, {
+            data: {
+                type: "hvac-units",
+                attributes: {
+                    "power": mode
+                },
+                relationships: {}
+            }
+        })
+        return hvac.fromJSON(response.data.data)
+    }
+
+    public async setHVACSwingMode(hvac: HVAC, mode: HVACSwingMode): Promise<HVAC> {
+        await this.updateClient()
+        let response = await this.client.patch(`/api/hvac-units/${hvac.id}`, {
+            data: {
+                type: "hvac-units",
+                attributes: {
+                    "swing": mode
+                },
+                relationships: {}
+            }
+        })
+        return hvac.fromJSON(response.data.data)
+    }
+
+    public async setHVACMode(hvac: HVAC, mode: HVACMode): Promise<HVAC> {
+        await this.updateClient()
+        let response = await this.client.patch(`/api/hvac-units/${hvac.id}`, {
+            data: {
+                type: "hvac-units",
+                attributes: {
+                    "mode": mode
+                },
+                relationships: {}
+            }
+        })
+        return hvac.fromJSON(response.data.data)
+    }
+
+    public async setHVACFanSpeed(hvac: HVAC, mode: HVACFanSpeed): Promise<HVAC> {
+        await this.updateClient()
+        let response = await this.client.patch(`/api/hvac-units/${hvac.id}`, {
+            data: {
+                type: "hvac-units",
+                attributes: {
+                    "fan-speed": mode
+                },
+                relationships: {}
+            }
+        })
+        return hvac.fromJSON(response.data.data)
+    }
+
+    public async setHVACTemperature(hvac: HVAC, temperature: number): Promise<HVAC> {
+        await this.updateClient()
+        const temperatureToSet = hvac.convertFromCToSetPointUnits(temperature);
+        let response = await this.client.patch(`/api/hvac-units/${hvac.id}`, {
+            data: {
+                type: "hvac-units",
+                attributes: {
+                    "temperature": temperatureToSet
+                },
+                relationships: {}
+            }
+        })
+        return hvac.fromJSON(response.data.data)
     }
 }
 

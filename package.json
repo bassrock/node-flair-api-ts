@@ -1,6 +1,6 @@
 {
   "name": "flair-api-ts",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "A ts-node implementation of the Flair Smart Vent API",
   "author": "bassrock",
   "main": "lib/index.js",
