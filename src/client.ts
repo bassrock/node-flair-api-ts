@@ -1,7 +1,14 @@
 import axios, { AxiosInstance } from 'axios';
-import * as querystring from 'query-string';
 import moment, { Moment } from 'moment';
-import { FlairMode, Puck, Structure, StructureHeatCoolMode, User, Vent, Room } from './models';
+import {
+  FlairMode,
+  Puck,
+  Structure,
+  StructureHeatCoolMode,
+  User,
+  Vent,
+  Room,
+} from './models';
 
 export interface Token {
   access_token: string;
@@ -11,9 +18,7 @@ export interface Token {
   refresh_token: string;
 }
 
-
 export class Client {
-
   private passwordTokenConfig: {
     password: string;
     scope: string;
@@ -51,7 +56,12 @@ export class Client {
    * @param username
    * @param password
    */
-  constructor(client_id: string, client_secret: string, username: string, password: string) {
+  constructor(
+    client_id: string,
+    client_secret: string,
+    username: string,
+    password: string
+  ) {
     this.passwordTokenConfig = {
       username: username,
       password: password,
@@ -77,13 +87,18 @@ export class Client {
    * Gets a refresh token and saves to memory
    */
   private async getRefreshToken(): Promise<Token> {
-    const requestURL = '/oauth/token?' + querystring.stringify(this.passwordTokenConfig);
+    const requestURL =
+      '/oauth/token?' +
+      new URLSearchParams(this.passwordTokenConfig).toString();
     const response = await this.client.post(requestURL);
     if (response.status !== 200) {
       throw new Error('Getting refresh token failed.');
     }
-    response.data.expires_at = moment().add(response.data.expires_in, 'seconds');
-    return this.currentToken = response.data as Token;
+    response.data.expires_at = moment().add(
+      response.data.expires_in,
+      'seconds'
+    );
+    return (this.currentToken = response.data as Token);
   }
 
   /**
@@ -95,17 +110,24 @@ export class Client {
   private async updateAccessToken(): Promise<Token> {
     if (this.currentToken === undefined) {
       return this.getRefreshToken();
-    } else if (this.currentToken.expires_at.isBefore(moment().subtract(20, 'seconds'))) {
-      const requestURL = '/oauth/token?' + querystring.stringify({
-        ...this.refreshTokenConfig,
-        refresh_token: this.currentToken!.refresh_token,
-      });
+    } else if (
+      this.currentToken.expires_at.isBefore(moment().subtract(20, 'seconds'))
+    ) {
+      const requestURL =
+        '/oauth/token?' +
+        new URLSearchParams({
+          ...this.refreshTokenConfig,
+          refresh_token: this.currentToken!.refresh_token,
+        }).toString();
       try {
         const response = await axios.post(requestURL);
         if (response.status !== 200) {
           return this.getRefreshToken();
         }
-        response.data.expires_at = moment().add(response.data.expires_in, 'seconds');
+        response.data.expires_at = moment().add(
+          response.data.expires_in,
+          'seconds'
+        );
         this.currentToken = response.data;
       } catch (e) {
         return this.getRefreshToken();
@@ -120,7 +142,8 @@ export class Client {
    */
   private async updateClient() {
     await this.updateAccessToken();
-    this.client.defaults.headers.common.Authorization = this.currentToken!.token_type + ' ' + this.currentToken!.access_token;
+    this.client.defaults.headers.common.Authorization =
+      this.currentToken!.token_type + ' ' + this.currentToken!.access_token;
   }
 
   /**
@@ -132,7 +155,7 @@ export class Client {
     const response = await this.client.get('/api/users');
     //TODO: Paginate
     return response.data.data.map((data: any): User => {
-      return (new User()).fromJSON(data);
+      return new User().fromJSON(data);
     });
   }
 
@@ -145,7 +168,7 @@ export class Client {
     const response = await this.client.get('/api/pucks');
     //TODO: Paginate
     return response.data.data.map((data: any): Puck => {
-      return (new Puck()).fromJSON(data);
+      return new Puck().fromJSON(data);
     });
   }
 
@@ -158,7 +181,7 @@ export class Client {
     const response = await this.client.get('/api/vents');
     //TODO: Paginate
     return response.data.data.map((data: any): Vent => {
-      return (new Vent()).fromJSON(data);
+      return new Vent().fromJSON(data);
     });
   }
 
@@ -169,7 +192,9 @@ export class Client {
    */
   public async getVentReading(vent: Vent): Promise<Vent> {
     await this.updateClient();
-    const response = await this.client.get(`/api/vents/${vent.id}/current-reading`);
+    const response = await this.client.get(
+      `/api/vents/${vent.id}/current-reading`
+    );
     vent.setCurrentReading(response.data.data);
     return vent;
   }
@@ -180,7 +205,10 @@ export class Client {
    * @param percentOpen
    * @returns
    */
-  public async setVentPercentOpen(vent: Vent, percentOpen: number): Promise<Vent> {
+  public async setVentPercentOpen(
+    vent: Vent,
+    percentOpen: number
+  ): Promise<Vent> {
     await this.updateClient();
     const response = await this.client.patch(`/api/vents/${vent.id}`, {
       data: {
@@ -202,7 +230,9 @@ export class Client {
    */
   public async getPuckReading(puck: Puck): Promise<Puck> {
     await this.updateClient();
-    const response = await this.client.get(`/api/pucks/${puck.id}/current-reading`);
+    const response = await this.client.get(
+      `/api/pucks/${puck.id}/current-reading`
+    );
     puck.setCurrentReading(response.data.data);
     return puck;
   }
@@ -216,7 +246,7 @@ export class Client {
     const response = await this.client.get('/api/rooms');
     //TODO: Paginate
     return response.data.data.map((data: any): Room => {
-      return (new Room()).fromJSON(data);
+      return new Room().fromJSON(data);
     });
   }
 
@@ -265,7 +295,7 @@ export class Client {
       data: {
         type: 'rooms',
         attributes: {
-          'active': !setAway,
+          active: !setAway,
         },
         relationships: {},
       },
@@ -283,7 +313,7 @@ export class Client {
     const response = await this.client.get('/api/structures');
     //TODO: Paginate
     return response.data.data.map((data: any): Structure => {
-      return (new Structure()).fromJSON(data);
+      return new Structure().fromJSON(data);
     });
   }
 
@@ -316,17 +346,23 @@ export class Client {
    * @param mode
    * @returns
    */
-  public async setStructureMode(structure: Structure, mode: FlairMode): Promise<Structure> {
+  public async setStructureMode(
+    structure: Structure,
+    mode: FlairMode
+  ): Promise<Structure> {
     await this.updateClient();
-    const response = await this.client.patch(`/api/structures/${structure.id}`, {
-      data: {
-        type: 'structures',
-        attributes: {
-          'mode': mode,
+    const response = await this.client.patch(
+      `/api/structures/${structure.id}`,
+      {
+        data: {
+          type: 'structures',
+          attributes: {
+            mode: mode,
+          },
+          relationships: {},
         },
-        relationships: {},
-      },
-    });
+      }
+    );
     return structure.fromJSON(response.data.data);
   }
 
@@ -336,17 +372,23 @@ export class Client {
    * @param mode
    * @returns
    */
-  public async setStructureHeatingCoolMode(structure: Structure, mode: StructureHeatCoolMode): Promise<Structure> {
+  public async setStructureHeatingCoolMode(
+    structure: Structure,
+    mode: StructureHeatCoolMode
+  ): Promise<Structure> {
     await this.updateClient();
-    const response = await this.client.patch(`/api/structures/${structure.id}`, {
-      data: {
-        type: 'structures',
-        attributes: {
-          'structure-heat-cool-mode': mode,
+    const response = await this.client.patch(
+      `/api/structures/${structure.id}`,
+      {
+        data: {
+          type: 'structures',
+          attributes: {
+            'structure-heat-cool-mode': mode,
+          },
+          relationships: {},
         },
-        relationships: {},
-      },
-    });
+      }
+    );
     return structure.fromJSON(response.data.data);
   }
 
@@ -356,17 +398,23 @@ export class Client {
    * @param setPointC
    * @returns
    */
-  public async setStructureSetPoint(structure: Structure, setPointC: number): Promise<Structure> {
+  public async setStructureSetPoint(
+    structure: Structure,
+    setPointC: number
+  ): Promise<Structure> {
     await this.updateClient();
-    const response = await this.client.patch(`/api/structures/${structure.id}`, {
-      data: {
-        type: 'structures',
-        attributes: {
-          'set-point-temperature-c': setPointC,
+    const response = await this.client.patch(
+      `/api/structures/${structure.id}`,
+      {
+        data: {
+          type: 'structures',
+          attributes: {
+            'set-point-temperature-c': setPointC,
+          },
+          relationships: {},
         },
-        relationships: {},
-      },
-    });
+      }
+    );
     structure.fromJSON(response.data.data);
     return structure;
   }
