@@ -88,4 +88,24 @@ describe('Client', () => {
       expect(result.setPointC).to.eql(24);
     });
   });
+
+  describe('8 legacy credentials', () => {
+    it('should fall back to the legacy password flow', async () => {
+      const result = await client.getUsers();
+      expect(result[0].email).to.eql('test_email');
+    });
+  });
+
+  describe('9 rejected credentials without username/password', () => {
+    it('should not attempt the legacy password flow', async () => {
+      const oauth2Only = new Client('test_client_id', 'test_client_secret');
+      let error: any;
+      try {
+        await oauth2Only.getUsers();
+      } catch (e) {
+        error = e;
+      }
+      expect(error?.response?.status).to.eql(401);
+    });
+  });
 });

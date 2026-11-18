@@ -15,11 +15,22 @@ export interface Token {
   expires_at: Moment;
   token_type: string;
   scope: string;
-  refresh_token: string;
+  refresh_token?: string;
 }
 
+/**
+ * Which Flair token endpoint the client authenticates against.
+ *
+ * - `oauth2`: `/oauth2/token` with the `client_credentials` grant. This is what
+ *   the client ID / secret shown in the Flair app (Account Settings ->
+ *   Developer Settings) work with. No username or password is needed.
+ * - `legacy`: `/oauth/token` with the `password` grant. Only works with the
+ *   older credentials Flair used to hand out via its request form.
+ */
+type AuthMode = 'oauth2' | 'legacy';
+
 export class Client {
-  private passwordTokenConfig: {
+  private passwordTokenConfig?: {
     password: string;
     scope: string;
     client_secret: string;
@@ -29,6 +40,15 @@ export class Client {
   };
 
   private currentToken?: Token;
+
+  private clientCredentialsTokenConfig: {
+    grant_type: string;
+    scope: string;
+    client_id: string;
+    client_secret: string;
+  };
+
+  private authMode?: AuthMode;
 
   private client: AxiosInstance;
 
@@ -53,23 +73,32 @@ export class Client {
    *
    * @param client_id
    * @param client_secret
-   * @param username
-   * @param password
+   * @param username Only needed for legacy credentials
+   * @param password Only needed for legacy credentials
    */
   constructor(
     client_id: string,
     client_secret: string,
-    username: string,
-    password: string
+    username?: string,
+    password?: string
   ) {
-    this.passwordTokenConfig = {
-      username: username,
-      password: password,
+    this.clientCredentialsTokenConfig = {
       scope: Client.scopes.join(' '),
       client_id: client_id,
       client_secret: client_secret,
-      grant_type: 'password',
+      grant_type: 'client_credentials',
     };
+
+    if (username && password) {
+      this.passwordTokenConfig = {
+        username: username,
+        password: password,
+        scope: Client.scopes.join(' '),
+        client_id: client_id,
+        client_secret: client_secret,
+        grant_type: 'password',
+      };
+    }
 
     this.refreshTokenConfig = {
       scope: Client.scopes.join('+'),
@@ -84,9 +113,57 @@ export class Client {
   }
 
   /**
-   * Gets a refresh token and saves to memory
+   * Gets a new token and saves it to memory.
+   *
+   * Tries the OAuth2 client credentials flow first, since that is what current
+   * Flair developer credentials support. If Flair rejects the client there and
+   * a username/password was supplied, falls back to the legacy password flow.
+   * Whichever flow works is remembered for the lifetime of the client.
    */
   private async getRefreshToken(): Promise<Token> {
+    if (this.authMode === 'legacy') {
+      return this.getLegacyPasswordToken();
+    }
+
+    try {
+      const token = await this.getClientCredentialsToken();
+      this.authMode = 'oauth2';
+      return token;
+    } catch (e) {
+      if (
+        this.authMode === undefined &&
+        this.passwordTokenConfig !== undefined &&
+        Client.isClientRejection(e)
+      ) {
+        const token = await this.getLegacyPasswordToken();
+        this.authMode = 'legacy';
+        return token;
+      }
+      throw e;
+    }
+  }
+
+  /**
+   * OAuth2 client credentials flow against /oauth2/token
+   */
+  private async getClientCredentialsToken(): Promise<Token> {
+    const response = await this.client.post(
+      '/oauth2/token',
+      new URLSearchParams(this.clientCredentialsTokenConfig).toString(),
+      { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } },
+    );
+    return this.saveToken(response.data);
+  }
+
+  /**
+   * Legacy password flow against /oauth/token
+   */
+  private async getLegacyPasswordToken(): Promise<Token> {
+    if (this.passwordTokenConfig === undefined) {
+      throw new Error(
+        'A username and password are required for legacy Flair credentials.',
+      );
+    }
     const requestURL =
       '/oauth/token?' +
       new URLSearchParams(this.passwordTokenConfig).toString();
@@ -94,11 +171,21 @@ export class Client {
     if (response.status !== 200) {
       throw new Error('Getting refresh token failed.');
     }
-    response.data.expires_at = moment().add(
-      response.data.expires_in,
-      'seconds'
-    );
-    return (this.currentToken = response.data as Token);
+    return this.saveToken(response.data);
+  }
+
+  private saveToken(data: any): Token {
+    data.expires_at = moment().add(data.expires_in, 'seconds');
+    return (this.currentToken = data as Token);
+  }
+
+  /**
+   * True when Flair rejected the client credentials themselves (as opposed to
+   * a network error or server outage).
+   */
+  private static isClientRejection(e: any): boolean {
+    const status = e?.response?.status;
+    return status === 400 || status === 401;
   }
 
   /**
@@ -113,6 +200,9 @@ export class Client {
     } else if (
       this.currentToken.expires_at.isBefore(moment().subtract(20, 'seconds'))
     ) {
+      if (this.authMode === 'oauth2' || !this.currentToken.refresh_token) {
+        return this.getRefreshToken();
+      }
       const requestURL =
         '/oauth/token?' +
         new URLSearchParams({
