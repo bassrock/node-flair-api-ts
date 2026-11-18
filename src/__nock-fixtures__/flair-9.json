@@ -1,0 +1,31 @@
+[
+    {
+        "scope": "https://api.flair.co:443",
+        "method": "POST",
+        "path": "/oauth2/token",
+        "body": "scope=structures.edit+structures.view+pucks.view+pucks.edit+vents.view+vents.edit+users.view&client_id=test_client_id&client_secret=test_client_secret&grant_type=client_credentials",
+        "status": 401,
+        "response": {
+            "error": "invalid_client"
+        },
+        "rawHeaders": [
+            "Date",
+            "Mon, 08 Mar 2021 00:14:03 GMT",
+            "Content-Type",
+            "application/json",
+            "Content-Length",
+            "244",
+            "Connection",
+            "close",
+            "Server",
+            "gunicorn/20.0.4",
+            "Cache-Control",
+            "no-store",
+            "Pragma",
+            "no-cache",
+            "Access-Control-Allow-Origin",
+            "*"
+        ],
+        "responseIsBinary": false
+    }
+]

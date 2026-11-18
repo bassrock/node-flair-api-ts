@@ -2,15 +2,14 @@
     {
         "scope": "https://api.flair.co:443",
         "method": "POST",
-        "path": "/oauth/token?client_id=test_client_id&client_secret=test_client_secret&grant_type=password&password=test_password&scope=structures.edit%20structures.view%20pucks.view%20pucks.edit%20vents.view%20vents.edit%20users.view&username=test_username",
-        "body": "",
+        "path": "/oauth2/token",
+        "body": "scope=structures.edit+structures.view+pucks.view+pucks.edit+vents.view+vents.edit+users.view&client_id=test_client_id&client_secret=test_client_secret&grant_type=client_credentials",
         "status": 200,
         "response": {
             "access_token": "test_access_token",
-            "expires_in": 3600,
+            "expires_in": 864000,
             "token_type": "Bearer",
-            "scope": "structures.edit structures.view pucks.view pucks.edit vents.view vents.edit users.view",
-            "refresh_token": "test_refresh_token"
+            "scope": "structures.edit structures.view pucks.view pucks.edit vents.view vents.edit users.view"
         },
         "rawHeaders": [
             "Date",
